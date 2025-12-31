@@ -2,25 +2,32 @@
 
 ;; ----- ido-last-directory-list -----
 (
- ("/home/srq/" . ".emacs.d/")
+ ("/home/srq/.emacs.d/" . "lisp/")
+ ("/home/srq/" . "learn/")
 )
 
 ;; ----- ido-work-directory-list -----
 (
- "/home/srq/.emacs.d/"
+ "/home/srq/learn/"
+ "/home/srq/.emacs.d/lisp/"
 )
 
 ;; ----- ido-work-file-list -----
 (
- "init.el"
- "early-init.el"
+ "x.scm"
+ "init-function.el"
+ "init-package.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/srq/.emacs.d/" (26953 10949 49986 928000) "./" "init.el" ".git/" "lisp/" "early-init.el" "etc/" "elpa/" "auto-save-list/" ".gitignore" "site-lisp/" "../" "var/")
+ ("/home/srq/learn/" (26958 40214 641625 942000) "./" "GUI.cpp" "expline.c~" "Programming_Qt.sln" "main.cpp~" "main.c~" "Window.cpp" "x.scm~" "#main.cpp#" "sum.c~" "~~sam~~" "rcomment.c" "detab.c" "increment.c" "kp.c" "increment.c~" "sum.c" "main.c" "Colormap.cpp" "sonnet" "Simple_window.cpp" "expline.c" "utils/" "x.fs" "#max.c#" "detab.c~" "CMakeLists.txt" "entab.c~" "entab.c" "Programming_Qt.vcxproj" "x.scm" "two.c~" "main.cpp" "#x.scm#" "#main.c#" "sum" "two.c" "#kp.c#" "../" "Graph.cpp" "x.fs~" "PPP/" "a.out")
 
- ("/home/srq/" (26950 14257 626282 927000) ".bashrc" "./" ".local/" "vm/" ".oldemacs" "learn/" "csv10.3.0/" ".bashrc.bak" "wget-log" ".pinerc" ".config/" ".bash_logout" ".motd_shown" ".sudo_as_admin_successful" ".vscode-remote-containers/" "csv10.3.0.tar.gz:Zone.Identifier" ".dotnet/" ".gitconfig" "gforth/" ".npm/" "#.oldemacs#" ".emacs.d/" ".akku/" "Downloads/" "emacs-30.2/" ".vscode-server/" "akku/" "sam.save" ".viminfo" ".landscape/" "acme.dump" "Akku.lock" "mail/" ".wget-hsts" "version-check.sh" ".emacs~" ".vim/" ".geiser_history.chez" ".bash_history" ".cache/" ".profile" "dead.letter" "../" ".ssh/" ".chezscheme_history" ".guix-profile" ".lesshst" "Akku.manifest" "scheme-langserver/" ".gforth-history" "uemacs/")
+ ("/home/srq/" (26954 48033 919974 192000) ".bashrc" "./" ".local/" "webfonts/" "vm/" ".oldemacs" "learn/" "csv10.3.0/" ".bashrc.bak" "wget-log" ".pinerc" ".config/" ".bash_logout" ".motd_shown" ".sudo_as_admin_successful" ".vscode-remote-containers/" ".dotnet/" ".gitconfig" "gforth/" ".npm/" "#.oldemacs#" ".emacs.d/" ".akku/" "Downloads/" "emacs-30.2/" ".vscode-server/" "LICENSE" "akku/" "sam.save" ".viminfo" ".landscape/" "acme.dump" "Akku.lock" "mail/" ".wget-hsts" "version-check.sh" ".emacs~" ".vim/" ".geiser_history.chez" ".bash_history" ".cache/" ".profile" "dead.letter" "../" ".ssh/" ".chezscheme_history" ".guix-profile/" ".lesshst" "Akku.manifest" "scheme-langserver/" ".gforth-history" "uemacs/")
+
+ ("/home/srq/.emacs.d/lisp/" (26953 15837 20833 517000) "./" "init-package.el~" "init-package.el" "custom.el" "init-function.el" "../" "custom.el~")
+
+ ("/home/srq/.emacs.d/" (26953 15853 798521 689000) "./" "init.el" ".git/" "lisp/" "early-init.el" "etc/" "elpa/" "auto-save-list/" ".gitignore" "site-lisp/" "../" "var/")
 )
 
 ;; ----- ido-unc-hosts-cache -----

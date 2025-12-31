@@ -1,6 +1,5 @@
-
-(add-to-list 'default-frame-alist '(font . "Unifont-16"))
-
+(set-face-attribute 'default nil
+		    :family "juliamono")
 
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6)
@@ -40,7 +39,7 @@
 (add-subdirs-to-load-path (expand-file-name "~/.emacs.d/"))
 
 
-(require 'init-default)
+(require 'init-function)
 
 (require 'init-package)
 
