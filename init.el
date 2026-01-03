@@ -1,5 +1,6 @@
 (set-face-attribute 'default nil
-		    :family "juliamono")
+		    :family "iosevka"
+		    :height 124)
 
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6)
