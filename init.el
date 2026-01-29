@@ -40,11 +40,13 @@
 (add-subdirs-to-load-path (expand-file-name "~/.emacs.d/"))
 
 
-(require 'init-function)
+(require 'init-cust)
 
 (require 'init-package)
 
 (use-package no-littering
   :ensure t)
+
+(require 'init-cl)
 
 (provide 'init)

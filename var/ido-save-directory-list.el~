@@ -8,22 +8,24 @@
 
 ;; ----- ido-work-directory-list -----
 (
+ "/home/srq/.emacs.d/"
  "/home/srq/.emacs.d/lisp/"
 )
 
 ;; ----- ido-work-file-list -----
 (
+ "init.el"
  "init-function.el"
  "init-package.el"
 )
 
 ;; ----- ido-dir-file-cache -----
 (
- ("/home/srq/.emacs.d/lisp/" (26969 4783 588083 809000) "init-function.el~" "./" "init-package.el~" "init-package.el" "custom.el" "init-function.el" "../" "custom.el~")
+ ("/home/srq/.emacs.d/" (27002 53845 643090 318000) "./" "init.el" ".git/" "lisp/" "ido.last" "early-init.el" "etc/" "elpa/" "auto-save-list/" ".gitignore" "site-lisp/" "../" ".gitignore~" "var/")
 
- ("/home/srq/.emacs.d/" (26968 55226 803681 762000) "./" "init.el" ".git/" "lisp/" "ido.last" "early-init.el" "etc/" "elpa/" "auto-save-list/" ".gitignore" "site-lisp/" "../" "var/")
+ ("/home/srq/" (27001 33159 291203 615000) ".bashrc" "./" ".local/" "webfonts/" "vm/" ".oldemacs" "learn/" ".w3m/" ".fbtermrc" "csv10.3.0/" ".bashrc.bak" "wget-log" ".pinerc" ".config/" ".bash_logout" ".motd_shown" ".sudo_as_admin_successful" ".vscode-remote-containers/" ".dotnet/" ".gitconfig" "gforth/" ".npm/" "#.oldemacs#" ".emacs.d/" ".akku/" "Downloads/" "emacs-30.2/" ".vscode-server/" "LICENSE" "akku/" "sam.save" ".viminfo" ".landscape/" "acme.dump" "Akku.lock" "mail/" ".wget-hsts" "version-check.sh" ".emacs~" ".vim/" ".swp" ".geiser_history.chez" ".bash_history" ".cache/" ".profile" "dead.letter" "../" ".ssh/" ".chezscheme_history" ".guix-profile/" ".lesshst" "Akku.manifest" "scheme-langserver/" ".gforth-history" "uemacs/" ".vimrc")
 
- ("/home/srq/" (26954 48033 919974 192000) ".bashrc" "./" ".local/" "webfonts/" "vm/" ".oldemacs" "learn/" "csv10.3.0/" ".bashrc.bak" "wget-log" ".pinerc" ".config/" ".bash_logout" ".motd_shown" ".sudo_as_admin_successful" ".vscode-remote-containers/" ".dotnet/" ".gitconfig" "gforth/" ".npm/" "#.oldemacs#" ".emacs.d/" ".akku/" "Downloads/" "emacs-30.2/" ".vscode-server/" "LICENSE" "akku/" "sam.save" ".viminfo" ".landscape/" "acme.dump" "Akku.lock" "mail/" ".wget-hsts" "version-check.sh" ".emacs~" ".vim/" ".geiser_history.chez" ".bash_history" ".cache/" ".profile" "dead.letter" "../" ".ssh/" ".chezscheme_history" ".guix-profile/" ".lesshst" "Akku.manifest" "scheme-langserver/" ".gforth-history" "uemacs/")
+ ("/home/srq/.emacs.d/lisp/" (26953 15837 20833 517000) "./" "init-package.el~" "init-package.el" "custom.el" "init-function.el" "../" "custom.el~")
 )
 
 ;; ----- ido-unc-hosts-cache -----
