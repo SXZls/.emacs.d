@@ -4,31 +4,34 @@
 
 (require 'cmuscheme)
 
-(add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
+(defvar racket-path "/usr/local/bin/racket")
+(defvar chez-path "/bin/scheme")
+(defvar guile-path "/bin/guile")
 
-(defvar racket-path "/usr/local/bin/")
-(defvar chez-path "/bin/")
-(defvar guile-path "/bin/")
+(setq scheme-program-name
+      (cond
+       ((file-exists-p chez-path) chez-path)
+       ((file-exists-p racket-path) racket-path)
+       ((file-exists-p guile-path) guile-path)))
+
+(add-to-list 'auto-mode-alist '("\\.scm\\'" . scheme-mode))
+(add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
+(add-to-list 'auto-mode-alist '("\\.ss\\'" . scheme-mode))
 
 (defun use-racket()
   (interactive)
-  (setq scheme-program-name "racket")
-  (push racket-path exec-path)
+  (setq scheme-program-name racket-path)
   (message "to racket"))
 
 (defun use-chez()
   (interactive)
-  (setq scheme-program-name "scheme")
-  (push chez-path exec-path)
+  (setq scheme-program-name chez-path)
   (message "to chez"))
 
 (defun use-guile()
   (interactive)
-  (setq scheme-program-name "guile")
-  (push guile-path exec-path)
+  (setq scheme-program-name guile-path)
   (message "to guile"))
-
-(use-chez)
 
 ;; bypass the interactive question and start the default interpreter
 (defun scheme-proc ()
