@@ -10,7 +10,7 @@
 
 (ido-mode 1)
 
-(set-background-color "darkslategray")
+(set-background-color "#353c4a")
 (set-foreground-color "wheat")
 
 (setq custom-file (expand-file-name "custom.el" (concat user-emacs-directory "lisp/")))
