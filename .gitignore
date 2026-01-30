@@ -1,3 +1,7 @@
 elpa/
 etc/
 var/
+*~
+#\#*
+*.elc
+.dir-locals.el
