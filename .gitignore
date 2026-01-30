@@ -5,3 +5,4 @@ var/
 #\#*
 *.elc
 .dir-locals.el
+ido.last

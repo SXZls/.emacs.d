@@ -44,9 +44,6 @@
 
 (require 'init-package)
 
-(use-package no-littering
-  :ensure t)
-
 (require 'init-cl)
 
 (provide 'init)

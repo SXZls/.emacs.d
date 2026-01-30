@@ -17,4 +17,10 @@
 (when(file-exists-p custom-file)
  (load-file custom-file))
 
+(use-package magit
+  :commands (magit-status magit-blame magit-log-buffer-file))
+
+(use-package no-littering
+  :ensure t)
+
 (provide 'init-cust)
