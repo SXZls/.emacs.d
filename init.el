@@ -46,4 +46,6 @@
 
 (require 'init-cl)
 
+(require 'init-scm)
+
 (provide 'init)

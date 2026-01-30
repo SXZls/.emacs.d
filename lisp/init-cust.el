@@ -23,4 +23,10 @@
 (use-package no-littering
   :ensure t)
 
+(use-package paredit
+  :ensure t
+  :hook ((scheme-mode . paredit-mode)
+	 (emacs-lisp-mode . paredit-mode)
+	 (lisp-mode . paredit-mode)))
+
 (provide 'init-cust)
