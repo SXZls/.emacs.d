@@ -44,10 +44,9 @@
 
 (add-subdirs-to-load-path (expand-file-name "~/.emacs.d/"))
 
-
-(require 'init-cust)
-
 (require 'init-package)
+
+(require 'init-enhance)
 
 (require 'init-cl)
 

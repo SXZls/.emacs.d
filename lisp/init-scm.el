@@ -14,9 +14,9 @@
        ((file-exists-p racket-path) racket-path)
        ((file-exists-p guile-path) guile-path)))
 
-(add-to-list 'auto-mode-alist '("\\.scm\\'" . scheme-mode))
-(add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
-(add-to-list 'auto-mode-alist '("\\.ss\\'" . scheme-mode))
+;(add-to-list 'auto-mode-alist '("\\.scm\\'" . scheme-mode))
+;(add-to-list 'auto-mode-alist '("\\.rkt\\'" . scheme-mode))
+;(add-to-list 'auto-mode-alist '("\\.ss\\'" . scheme-mode))
 
 (defun use-racket()
   (interactive)
