@@ -1,7 +1,7 @@
 (setq visible-bell t)
 (electric-pair-mode t)
-(setq display-line-numbers-type 'visual)
-(global-display-line-numbers-mode t)
+;(setq display-line-numbers-type 'visual)
+;(global-display-line-numbers-mode t)
 (column-number-mode 1)
 
 (which-key-mode 1)
@@ -23,9 +23,6 @@
       scroll-conservatively 10000)
 
 (setq frame-title-format "GNU Emacs@%b")
-
-(mouse-avoidance-mode 'animate)
-;; cursor avoid mouse
 
 (auto-image-file-mode)
 ;;open picture

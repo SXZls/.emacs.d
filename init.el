@@ -48,6 +48,8 @@
 
 (require 'init-enhance)
 
+(require 'init-edit)
+
 (require 'init-cl)
 
 (require 'init-scm)
