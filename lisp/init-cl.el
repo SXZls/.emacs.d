@@ -14,8 +14,6 @@
 (global-set-key (kbd "C-c s") 'sly)
 
 (add-to-list 'auto-mode-alist '("\\.lisp\\'" . lisp-mode))
-(add-to-list 'auto-mode-alist '("\\.lsp\\'" . lisp-mode))
 (add-to-list 'auto-mode-alist '("\\.cl\\'" . lisp-mode))
-(add-to-list 'auto-mode-alist '("\\.asd\\'" . lisp-mode))
 
 (provide 'init-cl)

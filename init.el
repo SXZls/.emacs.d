@@ -1,9 +1,14 @@
-(set-face-attribute 'default nil
-		    :family "iosevka"
-		    :height 124)
+(when (member "Iosevka" (font-family-list))
+  (set-face-attribute 'default nil
+		      :family "iosevka"
+		      :height 142))
 
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6)
+(add-hook 'emacs-startup-hook
+	  (lambda ()
+	    (setq gc-cons-threshold 800000
+		  gc-cons-percentage 0.1)))
 
 (require 'cl-lib)
 (defun add-subdirs-to-load-path (search-dir)

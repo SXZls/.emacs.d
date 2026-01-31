@@ -7,5 +7,6 @@
 (require 'use-package-ensure)
 
 (unless package-archive-contents
-  (package-refresh-contents))
+   (package-refresh-contents))
+
 (provide 'init-package)

@@ -7,10 +7,13 @@
 ;; packages are compiled ahead-of-time when they are installed and site files
 ;; are compiled when gccemacs is installed.
  frame-inhibit-implied-resize t
+ inhibit-x-resources t
+ inhibit-startup-screen t
  
  initial-major-mode 'fundamental-mode
  
  package-enable-at-startup nil
+ package-quickstart nil
  package--init-file-ensured t
  use-package-enable-ime-menu-support t
 
