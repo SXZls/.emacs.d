@@ -8,11 +8,6 @@
 
 (ido-mode 1)
 
-(set-face-attribute
- 'default nil
- :background (if (display-graphic-p) "darkslategray" "black")
- :foreground (if (display-graphic-p) "wheat" "white"))
-
 (setq kill-ring-max 200)
 ;; paste and cut board
 
@@ -26,13 +21,11 @@
 
 (setq scroll-margin 3
       scroll-conservatively 10000)
-;; 
+
+(setq frame-title-format "GNU Emacs@%b")
 
 (mouse-avoidance-mode 'animate)
 ;; cursor avoid mouse
-
-(setq frame-title-format "GNU Emacs@%b")
-;;change title
 
 (auto-image-file-mode)
 ;;open picture
@@ -64,6 +57,11 @@
 
 (setq dired-recursive-copies 'top)
 (setq dired-recursive-deletes 'top)
+
+(set-face-attribute
+ 'default nil
+ :background (if (display-graphic-p) "darkslategray" "black")
+ :foreground (if (display-graphic-p) "wheat" "white"))
 
 (setq custom-file (expand-file-name "custom.el" (concat user-emacs-directory "lisp/")))
 (when(file-exists-p custom-file)
