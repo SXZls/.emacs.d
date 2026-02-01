@@ -9,13 +9,13 @@
 (ido-mode 1)
 
 (setq kill-ring-max 200)
-;; paste and cut board
+;; with a big kill ring. This prevents me from accidentally cutting out important things.
 
 (setq-default indent-tabs-mode nil)
 
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
-;; set  sentence-end can read chiese code,dont need to add two space after the fill
+;; Setting sentence-end can recognize Chinese punctuation. There is no need to insert two spaces when filling.
 
 (setq enable-recursive-minibuffers t)
 
