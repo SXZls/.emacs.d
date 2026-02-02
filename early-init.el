@@ -3,9 +3,10 @@
 
 (setq
  native-comp-deferred-compilation nil
- native-comp-jit-compilation nil ;; Prevent unwanted runtime compilation for gccemacs (native-comp) users;
-;; packages are compiled ahead-of-time when they are installed and site files
-;; are compiled when gccemacs is installed.
+ native-comp-jit-compilation nil
+ ;; Prevent unwanted runtime compilation for gccemacs (native-comp) users;
+ ;; packages are compiled ahead-of-time when they are installed and site files
+ ;; are compiled when gccemacs is installed.
  frame-inhibit-implied-resize t
  inhibit-x-resources t
  inhibit-startup-screen t

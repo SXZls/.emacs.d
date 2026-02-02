@@ -21,7 +21,8 @@
                   (or
                    ;; Remove files that are not directories
                    (not (file-directory-p (concat dir subdir)))
-                   ;; Remove parent, language-related, and version control directories
+                   ;; Remove parent, language-related,
+                   ;; and version control directories
                    (member subdir '("." ".." 
                                     "dist" "node_modules" "__pycache__" 
                                     "RCS" "CVS" "rcs" "cvs" ".git" ".github" "el~" "EL~")))) 

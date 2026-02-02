@@ -8,14 +8,16 @@
 
 (ido-mode 1)
 
-(setq kill-ring-max 200)
-;; with a big kill ring. This prevents me from accidentally cutting out important things.
+(setq kill-ring-max 150)
+;; with a big kill ring.
+;This prevents me from accidentally cutting out important things.
 
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil
 
-(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
+(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"))
 (setq sentence-end-double-space nil)
-;; Setting sentence-end can recognize Chinese punctuation. There is no need to insert two spaces when filling.
+;; Setting sentence-end can recognize Chinese punctuation.
+;There is no need to insert two spaces when filling.
 
 (setq enable-recursive-minibuffers t)
 
@@ -33,12 +35,11 @@
 (put 'downcase-region 'disabled nil)
 (put 'LaTeX-hide-environment 'disabled nil)
 
-(setq version-control t)
-(setq kept-new-versions 3)
-(setq delete-old-versions t)
-(setq kept-old-versions 2)
-(setq dired-kept-versions 1)
-;; version control
+;(setq version-control t)
+;(setq kept-new-versions 3)
+;(setq delete-old-versions t)
+;(setq dired-kept-versions 1)
+;; version control (if no git)
 
 (setq dired-recursive-copies 'top)
 (setq dired-recursive-deletes 'top)
@@ -48,7 +49,8 @@
  :background (if (display-graphic-p) "darkslategray" "black")
  :foreground (if (display-graphic-p) "wheat" "white"))
 
-(setq custom-file (expand-file-name "custom.el" (concat user-emacs-directory "lisp/")))
+(setq custom-file (expand-file-name "custom.el"
+                                    (concat user-emacs-directory "lisp/")))
 (when(file-exists-p custom-file)
  (load-file custom-file))
 
