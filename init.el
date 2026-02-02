@@ -45,6 +45,20 @@
 
 (add-subdirs-to-load-path (expand-file-name "~/.emacs.d/"))
 
+;(defvar dumped-load-path)
+;(defvar dumped-eln-path)
+;(if (not (boundp 'dumped-load-path))
+;    (progn
+;      (setq dumped-load-path (list "~/.emacs.d/elpa"))
+;      (setq dumped-eln-path (list "~/.emacs.d/eln-cache"))
+;      (load (concat (or (expand-file-name "~/.emacs.d/lisp/init-enhance")
+;                        (expand-file-name "~/.emacs.dlisp/edit"))))))
+;  (setq load-path dumped-load-path)
+;  (when (native-comp-available-p)
+;   (setq native-comp-jit-compilation t
+;         native-comp-eln-load-path dumped-eln-path))
+;; native complition config
+
 (require 'init-package)
 
 (require 'init-enhance)

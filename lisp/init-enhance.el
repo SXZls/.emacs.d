@@ -3,26 +3,36 @@
 ;(setq display-line-numbers-type 'visual)
 ;(global-display-line-numbers-mode t)
 (column-number-mode 1)
-
 (which-key-mode 1)
-
 (ido-mode 1)
+
+(global-font-lock-mode t)
+(transient-mark-mode t)
+
+(setq track-eol t)
+(setq kill-whole-line t)
 
 (setq kill-ring-max 150)
 ;; with a big kill ring.
 ;This prevents me from accidentally cutting out important things.
 
 (setq-default indent-tabs-mode nil)
+(setq tab-always-indent 'complete)
 
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 ;; Setting sentence-end can recognize Chinese punctuation.
 ;There is no need to insert two spaces when filling.
 
+(setq recentf-exclude '("\\.[a-z]+\\.eld$"
+                        "\\.emacs\\.d/\\(?:[a-z]\\|-\\)*$" "[0a-f]+\\.plstore$")
+      dired-use-ls-dired nil)
+
 (setq enable-recursive-minibuffers t)
 
 (setq scroll-margin 3
-      scroll-conservatively 10000)
+      scroll-conservatively 97
+      scroll-preserve-screen-position t)
 
 (setq frame-title-format "GNU Emacs@%b")
 
@@ -35,6 +45,8 @@
 (put 'downcase-region 'disabled nil)
 (put 'LaTeX-hide-environment 'disabled nil)
 
+(setq make-backup-files t
+      create-lockfiles nil)
 ;(setq version-control t)
 ;(setq kept-new-versions 3)
 ;(setq delete-old-versions t)
