@@ -45,8 +45,8 @@
 (put 'downcase-region 'disabled nil)
 (put 'LaTeX-hide-environment 'disabled nil)
 
-(setq make-backup-files t
-      create-lockfiles nil)
+;(setq make-backup-files nil
+;      create-lockfiles nil)
 ;(setq version-control t)
 ;(setq kept-new-versions 3)
 ;(setq delete-old-versions t)
