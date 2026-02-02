@@ -12,9 +12,9 @@
 ;; with a big kill ring.
 ;This prevents me from accidentally cutting out important things.
 
-(setq-default indent-tabs-mode nil
+(setq-default indent-tabs-mode nil)
 
-(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"))
+(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 ;; Setting sentence-end can recognize Chinese punctuation.
 ;There is no need to insert two spaces when filling.
