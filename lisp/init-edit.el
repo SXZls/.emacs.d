@@ -8,13 +8,13 @@
    ("\\.scm\\'" . scheme-mode)
    ("\\.rkt\\'" . scheme-mode)
    ("\\.ss\\'" . scheme-mode)))
-;; easy to add-to-list.
+;; easy to add-mode-list.
 
 (setq-default abbrev-mode t)
 (setq save-abbrevs nil)
-(setq my-abbrevs-file "~/.emacs.d/abbrevs.el")
-(if (file-exists-p "~/.emacs.d/abbrevs.el")
-    (read-abbrev-file "~/.emacs.d/abbrevs.el"))
+(setq my-abbrevs-file "~/.emacs.d/lisp/abbrevs.el")
+(if (file-exists-p "~/.emacs.d/lisp/abbrevs.el")
+    (read-abbrev-file "~/.emacs.d/lisp/abbrevs.el"))
 
 (use-package paredit
   :ensure t

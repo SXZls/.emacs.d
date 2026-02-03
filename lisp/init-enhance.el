@@ -5,22 +5,17 @@
 (column-number-mode 1)
 (which-key-mode 1)
 (ido-mode 1)
-
 (global-font-lock-mode t)
 (transient-mark-mode t)
 
 (setq track-eol t)
 (setq kill-whole-line t)
 
-(setq kill-ring-max 150)
-;; with a big kill ring.
-;This prevents me from accidentally cutting out important things.
-
 (setq-default indent-tabs-mode nil)
 (setq tab-always-indent 'complete)
 
-(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
-(setq sentence-end-double-space nil)
+(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
+      sentence-end-double-space nil)
 ;; Setting sentence-end can recognize Chinese punctuation.
 ;There is no need to insert two spaces when filling.
 
@@ -33,8 +28,6 @@
 (setq scroll-margin 3
       scroll-conservatively 97
       scroll-preserve-screen-position t)
-
-(setq frame-title-format "GNU Emacs@%b")
 
 (auto-image-file-mode)
 ;;open picture
