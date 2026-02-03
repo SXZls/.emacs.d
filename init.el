@@ -1,8 +1,3 @@
-(when (member "Iosevka" (font-family-list))
-  (set-face-attribute 'default nil
-		      :family "iosevka"
-		      :height 142))
-
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6)
 (add-hook 'emacs-startup-hook

@@ -49,6 +49,17 @@
 (setq dired-recursive-copies 'top)
 (setq dired-recursive-deletes 'top)
 
+(when (member "JuliaMono" (font-family-list))
+  (set-face-attribute 'default nil
+		      :family "juliamono"
+		      :height 142))
+(defun to-unifont()
+  (interactive)
+  (buffer-face-set '(:family "Unifont" :height 160)))
+
+(global-set-key (kbd"C-c u")
+                'to-unifont)
+
 (set-face-attribute
  'default nil
  :background (if (display-graphic-p) "darkslategray" "black")
