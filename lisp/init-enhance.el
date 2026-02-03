@@ -56,9 +56,13 @@
 (defun to-unifont()
   (interactive)
   (buffer-face-set '(:family "Unifont" :height 160)))
-
 (global-set-key (kbd"C-c u")
                 'to-unifont)
+(defun to-juliamono()
+  (interactive)
+  (buffer-face-set '(:family "JuliaMono" :height 160)))
+(global-set-key (kbd"C-c j")
+                'to-juliamono)
 
 (set-face-attribute
  'default nil
