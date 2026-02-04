@@ -12,9 +12,11 @@
 
 (setq-default abbrev-mode t)
 (setq save-abbrevs nil)
-(setq my-abbrevs-file "~/.emacs.d/lisp/abbrevs.el")
-(if (file-exists-p "~/.emacs.d/lisp/abbrevs.el")
-    (read-abbrev-file "~/.emacs.d/lisp/abbrevs.el"))
+(setq my-abbrevs-file (expand-file-name
+                       "lisp/abbrevs.el"
+                       user-emacs-directory))
+(if (file-exists-p my-abbrevs-file)
+    (read-abbrev-file my-abbrevs-file))
 
 (use-package yasnippet
   :ensure t

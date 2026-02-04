@@ -38,7 +38,7 @@
         ;; Continue recursively searching subdirectories
         (add-subdirs-to-load-path subdir-path)))))
 
-(add-subdirs-to-load-path (expand-file-name "~/.emacs.d/"))
+(add-subdirs-to-load-path (expand-file-name user-emacs-directory))
 
 ;(defvar dumped-load-path)
 ;(defvar dumped-eln-path)

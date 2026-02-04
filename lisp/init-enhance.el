@@ -5,6 +5,7 @@
 (ido-mode 1)
 (global-font-lock-mode t)
 (transient-mark-mode t)
+(prefer-coding-system 'utf-8)
 
 (setq track-eol t)
 (setq kill-whole-line t)
@@ -71,7 +72,6 @@
 (use-package magit
   :commands (magit-status magit-blame magit-log-buffer-file))
 
-(use-package no-littering
-  :ensure t)
+(require 'no-littering)
 
 (provide 'init-enhance)

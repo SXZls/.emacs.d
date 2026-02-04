@@ -4,9 +4,9 @@
 
 (package-initialize)
 
-(require 'use-package-ensure)
-
-(unless package-archive-contents
-   (package-refresh-contents))
+(defun pkg/require (packages)
+  (dolist (package packages)
+    (when (not (package-install-papackage))
+      (package-install package))))
 
 (provide 'init-package)
