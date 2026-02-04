@@ -1,9 +1,7 @@
 (setq visible-bell t)
 (electric-pair-mode t)
-;(setq display-line-numbers-type 'visual)
 ;(global-display-line-numbers-mode t)
 (column-number-mode 1)
-(which-key-mode 1)
 (ido-mode 1)
 (global-font-lock-mode t)
 (transient-mark-mode t)
@@ -46,6 +44,7 @@
 ;(setq dired-kept-versions 1)
 ;; version control (if no git)
 
+(require 'dired-x)
 (setq dired-recursive-copies 'top)
 (setq dired-recursive-deletes 'top)
 

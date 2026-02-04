@@ -16,6 +16,14 @@
 (if (file-exists-p "~/.emacs.d/lisp/abbrevs.el")
     (read-abbrev-file "~/.emacs.d/lisp/abbrevs.el"))
 
+(use-package yasnippet
+  :ensure t
+  :diminish yas-minor-mode
+  :hook ((prog-mode . yas-minor-mode)
+         (LaTeX-mode . yas-minor-mode))
+  :config
+  (yas-global-mode 1))
+
 (use-package paredit
   :ensure t
   :hook ((scheme-mode . paredit-mode)
