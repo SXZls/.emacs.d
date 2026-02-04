@@ -4,9 +4,6 @@
 
 (package-initialize)
 
-(defun pkg/require (packages)
-  (dolist (package packages)
-    (when (not (package-install-papackage))
-      (package-install package))))
+(require 'use-package)
 
 (provide 'init-package)

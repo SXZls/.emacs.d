@@ -18,6 +18,9 @@
 (if (file-exists-p my-abbrevs-file)
     (read-abbrev-file my-abbrevs-file))
 
+(global-set-key (kbd "M-/") 'dabbrev-expand)
+(setq isearch-allow-scroll t)
+
 (use-package yasnippet
   :ensure t
   :diminish yas-minor-mode
