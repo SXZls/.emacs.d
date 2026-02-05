@@ -21,7 +21,7 @@
 (global-set-key (kbd "M-/") 'dabbrev-expand)
 (setq isearch-allow-scroll t)
 
-(require 'cedet)
+;(require 'cedet)
 ;(require 'semantic)
 ;(semantic-mode 1)
 ;(setq semanticdb-project-roots (list "/"))
