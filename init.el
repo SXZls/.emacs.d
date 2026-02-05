@@ -60,6 +60,8 @@
 
 (require 'init-edit)
 
+(require 'init-func)
+
 (require 'init-cl)
 
 (require 'init-scm)

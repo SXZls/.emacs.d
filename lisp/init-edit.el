@@ -21,6 +21,18 @@
 (global-set-key (kbd "M-/") 'dabbrev-expand)
 (setq isearch-allow-scroll t)
 
+(require 'cedet)
+;(require 'semantic)
+;(semantic-mode 1)
+;(setq semanticdb-project-roots (list "/"))
+;(defun senator-set()
+;  (senator-mode 1))
+;(add-hook 'c-mode-hook 'senator-set)
+;(add-hook 'c++-mode-hook 'senator-set)
+; is heavy,so read code use it
+
+(add-hook 'haskell-mode-hook 'whitespace-mode)
+
 (use-package yasnippet
   :ensure t
   :diminish yas-minor-mode

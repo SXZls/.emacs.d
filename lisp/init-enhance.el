@@ -1,17 +1,25 @@
-(setq visible-bell t)
-(electric-pair-mode t)
+(require 'recentf)
+(recentf-mode 1)
+(require 'saveplace)
+(setq-default save-place 1)
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+(setq-default fill-column 80)
+(setq-default indent-tabs-mode nil)
+(setq tab-always-indent 'complete)
+
+(setq visible-bell 1)
+(electric-pair-mode 1)
 ;(global-display-line-numbers-mode t)
 (column-number-mode 1)
 (ido-mode 1)
-(global-font-lock-mode t)
-(transient-mark-mode t)
+(global-font-lock-mode 1)
+(transient-mark-mode 1)
+(auto-compression-mode 1)
+(auto-fill-mode 1)
 (prefer-coding-system 'utf-8)
-
-(setq track-eol t)
-(setq kill-whole-line t)
-
-(setq-default indent-tabs-mode nil)
-(setq tab-always-indent 'complete)
+(setq track-eol 1)
+(setq kill-whole-line 1)
 
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
       sentence-end-double-space nil)
@@ -19,7 +27,7 @@
 ;There is no need to insert two spaces when filling.
 
 (setq recentf-exclude '("\\.[a-z]+\\.eld$"
-                        "\\.emacs\\.d/\\(?:[a-z]\\|-\\)*$" "[0a-f]+\\.plstore$")
+                        "\\.emacs\\.d/\\(?:[a-z]\\|-\\)*$")
       dired-use-ls-dired nil)
 
 (setq enable-recursive-minibuffers t)
@@ -45,7 +53,9 @@
 ;(setq dired-kept-versions 1)
 ;; version control (if no git)
 
-(require 'dired-x)
+(add-hook 'dired-load-hook
+          (function (lambda ()
+                      (load "dired-x"))))
 (setq dired-recursive-copies 'top)
 (setq dired-recursive-deletes 'top)
 
@@ -72,6 +82,6 @@
 (use-package magit
   :commands (magit-status magit-blame magit-log-buffer-file))
 
-(require 'no-littering)
+(use-package no-littering)
 
 (provide 'init-enhance)
