@@ -70,8 +70,10 @@
 (add-hook 'scheme-mode-hook
   (lambda ()
     (paredit-mode 1)
-    (define-key scheme-mode-map (kbd "C-c C-s") 'scheme-send-last-sexp-split-window)
-    (define-key scheme-mode-map (kbd "C-c C-d") 'scheme-send-definition-split-window)
+    (define-key scheme-mode-map (kbd "C-c C-s")
+                'scheme-send-last-sexp-split-window)
+    (define-key scheme-mode-map (kbd "C-c C-d")
+                'scheme-send-definition-split-window)
     (local-set-key (kbd "C-c c") 'use-chez)
     (local-set-key (kbd "C-c r") 'use-racket)
     (local-set-key (kbd "C-c g") 'use-guile)))
