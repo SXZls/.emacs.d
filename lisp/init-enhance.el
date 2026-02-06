@@ -21,7 +21,8 @@
 (setq track-eol 1)
 (setq kill-whole-line 1)
 
-(setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
+(setq sentence-end
+      "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
       sentence-end-double-space nil)
 ;; Setting sentence-end can recognize Chinese punctuation.
 ;There is no need to insert two spaces when filling.
@@ -69,10 +70,9 @@
 (global-set-key (kbd"C-c u")
                 'to-unifont)
 
-(set-face-attribute
- 'default nil
- :background (if (display-graphic-p) "darkslategray" "black")
- :foreground (if (display-graphic-p) "wheat" "white"))
+(add-to-list 'custom-theme-load-path
+             (expand-file-name "themes" user-emacs-directory))
+(load-theme 'srq-custom t)
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
