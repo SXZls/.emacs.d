@@ -3,7 +3,7 @@
    'srq-custom
    `(default ((t
                (:background
-                ,(if(display-graphic-p) "#002b36" "black")
+                ,(if(display-graphic-p) "darkslategray" "black")
                 :foreground
                 ,(if (display-graphic-p) "wheat" "white"))))))
 

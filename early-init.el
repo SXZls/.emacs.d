@@ -4,7 +4,6 @@
  frame-inhibit-implied-resize t
  inhibit-x-resources t
  inhibit-startup-screen t
- frame-title-format "(%b)"
  initial-major-mode 'fundamental-mode
  
  package-enable-at-startup nil
