@@ -74,6 +74,11 @@
              (expand-file-name "themes" user-emacs-directory))
 (load-theme 'srq-custom t)
 
+;(set-face-attribute
+; 'default nil
+; :background (if (display-graphic-p) "#282c34" "black")
+; :foreground (if (display-graphic-p) "wheat" "white"))
+
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
 (when(file-exists-p custom-file)
