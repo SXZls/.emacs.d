@@ -1,8 +1,8 @@
 (require 'recentf)
-(recentf-mode 1)
-(require 'saveplace)
-(setq-default save-place 1)
 (require 'uniquify)
+
+(recentf-mode 1)
+(save-place-mode 1)
 (setq uniquify-buffer-name-style 'forward)
 (setq-default fill-column 80)
 (setq-default indent-tabs-mode nil)
@@ -49,7 +49,8 @@
 ;(setq make-backup-files nil
 ;      create-lockfiles nil)
 ;(setq version-control t)
-;(setq kept-new-versions 3)
+;(setq kept-new-versions 6)
+;(setq kept-old-version 2)
 ;(setq delete-old-versions t)
 ;(setq dired-kept-versions 1)
 ;; version control (if no git)
@@ -70,14 +71,12 @@
 (global-set-key (kbd"C-c u")
                 'to-unifont)
 
-(add-to-list 'custom-theme-load-path
-             (expand-file-name "themes" user-emacs-directory))
-(load-theme 'srq-custom t)
+(load-theme 'wombat t)
 
 ;(set-face-attribute
 ; 'default nil
-; :background (if (display-graphic-p) "#282c34" "black")
-; :foreground (if (display-graphic-p) "wheat" "white"))
+; :background (if (display-graphic-p) "#1E1E1E" "black")
+; :foreground (if (display-graphic-p) "#98C379" "white"))
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
