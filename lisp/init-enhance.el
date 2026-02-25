@@ -71,12 +71,10 @@
 (global-set-key (kbd"C-c u")
                 'to-unifont)
 
-(load-theme 'modus-vivendi-tritanopia t)
-
-;(set-face-attribute
-; 'default nil
-; :background (if (display-graphic-p) "#1E1E1E" "black")
-; :foreground (if (display-graphic-p) "#98C379" "white"))
+(set-face-attribute
+ 'default nil
+ :background (if (display-graphic-p) "#1E1E1E" "black")
+ :foreground (if (display-graphic-p) "#98C379" "white"))
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
