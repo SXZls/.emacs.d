@@ -40,6 +40,9 @@
 (auto-image-file-mode)
 ;;open picture
 
+;; treesit
+(setq treesit-extra-load-path (executable-find "tree-sitter"))
+
 (put 'set-goal-column 'disabled nil)
 ; (put 'narrow-to-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -73,8 +76,8 @@
 
 (set-face-attribute
  'default nil
- :background (if (display-graphic-p) "#1E1E1E" "black")
- :foreground (if (display-graphic-p) "#98C379" "white"))
+ :background (if (display-graphic-p) "#282c34" "black")
+ :foreground (if (display-graphic-p) "lightgray" "white"))
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
