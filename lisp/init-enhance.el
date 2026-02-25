@@ -64,14 +64,14 @@
 (when (member "JuliaMono" (font-family-list))
   (set-face-attribute 'default nil
 		      :family "juliamono"
-		      :height 142))
+		      :height 130))
 (defun to-unifont()
   (interactive)
   (buffer-face-set '(:family "Unifont" :height 160)))
 (global-set-key (kbd"C-c u")
                 'to-unifont)
 
-(load-theme 'wombat t)
+(load-theme 'modus-vivendi-tritanopia t)
 
 ;(set-face-attribute
 ; 'default nil
