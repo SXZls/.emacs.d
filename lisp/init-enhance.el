@@ -84,9 +84,26 @@
 (when(file-exists-p custom-file)
  (load-file custom-file))
 
-(use-package magit
-  :commands (magit-status magit-blame magit-log-buffer-file))
+;;;;;;;;
+;; magit
+;;;;;;;;
+(ensure-installed 'magit)
+;(require 'magit)
+(autoload 'magit-status "magit" "Magit status." t)
+(autoload 'magit-blame "magit" "Blame current file." t)
+(autoload 'magit-log-buffer-file "magit" "Log current file." t)
+(autoload 'magit-dispatch "magit" "Magit dispatch." t)
+(autoload 'magit-file-dispatch "magit" "Magit file dispatch." t)
+(global-set-key (kbd "C-x g") 'magit-status)
+(with-eval-after-load 'magit
+  (setq magit-auto-select-connection 'always)
+  ;; other configs
+  )
 
-(use-package no-littering)
+;;;;;;;;;;;;;;;
+;; no-littering
+;;;;;;;;;;;;;;;
+(ensure-installed 'no-littering)
+(require 'no-littering)
 
 (provide 'init-enhance)

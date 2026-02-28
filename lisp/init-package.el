@@ -4,12 +4,24 @@
 
 (package-initialize)
 
-(defun srq/require (packages)
-  (dolist (package packages)
-    (when (not (package-installed-p package))
-      (package-refresh-contents)
-      (package-install package))))
+(defvar *package-lists-fetched* nil)
 
-(require 'use-package)
+(defun soft-fetch-package-lists ()
+  (unless *package-lists-fetched*
+    (package-refresh-contents)
+    (setf *package-lists-fetched* t)))
+
+;; package-installed-p will always report NIL if a newer
+;; version is available. We do not want that.
+(defun package-locally-installed-p (package)
+  (assq package package-alist))
+
+(defun ensure-installed (&rest packages)
+  (unless (cl-loop for package in packages
+                   always (package-locally-installed-p package))
+    (soft-fetch-package-lists)
+    (dolist (package packages)
+      (unless (package-locally-installed-p package)
+        (package-install package)))))
 
 (provide 'init-package)
