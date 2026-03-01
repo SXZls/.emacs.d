@@ -5,8 +5,7 @@
 	  (lambda ()
 	    (setq gc-cons-threshold 800000
 		  gc-cons-percentage 0.1
-                  file-name-handler-alist default-file-name-handler-alist)))
-(require 'cl-lib)
+                  file-name-handler-alist (default-value 'file-name-handler-alist))))
 
 (defun update-load-path (&rest _)
   "Update the `load-path` to prioritize personal configurations."
@@ -26,6 +25,8 @@ Avoid placing large files like EAF in `site-lisp` to prevent slow startup."
 
 ;; Ensure these functions are called after `package-initialize`
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
+
+(require 'cl-lib)
 
 (require 'init-package)
 

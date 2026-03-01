@@ -76,8 +76,8 @@
 
 (set-face-attribute
  'default nil
- :background (if (display-graphic-p) "#282c34" "black");black or unspecified-gb 
- :foreground (if (display-graphic-p) "peachpuff" "white"))
+ :background (if (display-graphic-p) "#15282a" "black");black or unspecified-gb 
+ :foreground (if (display-graphic-p) "gray" "white"))
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
@@ -104,6 +104,12 @@
 ;; no-littering
 ;;;;;;;;;;;;;;;
 (ensure-installed 'no-littering)
-(require 'no-littering)
+
+(run-with-idle-timer 1 nil
+                     (lambda ()
+                       (require 'no-littering)
+                       (setq auto-save-file-name-transforms
+                             `((".*",(no-littering-expand-var-file-name
+                                      "auto-save/") t)))))
 
 (provide 'init-enhance)
