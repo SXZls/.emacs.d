@@ -77,7 +77,7 @@
 (set-face-attribute
  'default nil
  :background (if (display-graphic-p) "#15282a" "black");black or unspecified-gb 
- :foreground (if (display-graphic-p) "gray" "white"))
+ :foreground (if (display-graphic-p) "wheat" "white"))
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
