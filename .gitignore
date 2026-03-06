@@ -9,3 +9,4 @@ recentf
 *.elc
 .dir-locals.el
 ido.last
+/places
