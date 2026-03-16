@@ -33,8 +33,7 @@
 
 (setq enable-recursive-minibuffers t)
 
-(setq scroll-margin 3
-      scroll-conservatively 97
+(setq scroll-conservatively 97
       scroll-preserve-screen-position t)
 
 (auto-image-file-mode)
@@ -99,17 +98,5 @@
   (setq magit-auto-select-connection 'always)
   ;; other configs
   )
-
-;;;;;;;;;;;;;;;
-;; no-littering
-;;;;;;;;;;;;;;;
-(ensure-installed 'no-littering)
-
-(run-with-idle-timer 1 nil
-                     (lambda ()
-                       (require 'no-littering)
-                       (setq auto-save-file-name-transforms
-                             `((".*",(no-littering-expand-var-file-name
-                                      "auto-save/") t)))))
 
 (provide 'init-enhance)

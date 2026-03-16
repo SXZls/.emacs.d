@@ -29,9 +29,7 @@
 ;  (senator-mode 1))
 ;(add-hook 'c-mode-hook 'senator-set)
 ;(add-hook 'c++-mode-hook 'senator-set)
-; is heavy,so read code use it
-
-(add-hook 'haskell-mode-hook 'whitespace-mode)
+; is heavy, so dont use
 
 ;;;;;;;;;;;;
 ;; yasnippet
