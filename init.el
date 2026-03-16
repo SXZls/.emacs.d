@@ -36,8 +36,6 @@ Avoid placing large files like EAF in `site-lisp` to prevent slow startup."
 
 (require 'init-edit)
 
-(require 'init-func)
-
 (require 'init-cl)
 
 (require 'init-scm)
