@@ -27,10 +27,6 @@
 ;; Setting sentence-end can recognize Chinese punctuation.
 ;There is no need to insert two spaces when filling.
 
-(setq recentf-exclude '("\\.[a-z]+\\.eld$"
-                        "\\.emacs\\.d/\\(?:[a-z]\\|-\\)*$")
-      dired-use-ls-dired nil)
-
 (setq enable-recursive-minibuffers t)
 
 (setq scroll-conservatively 97
@@ -60,8 +56,9 @@
 (add-hook 'dired-load-hook
           (function (lambda ()
                       (load "dired-x"))))
-(setq dired-recursive-copies 'top)
-(setq dired-recursive-deletes 'top)
+(setq dired-recursive-copies 'top
+      dired-recursive-deletes 'top
+      dired-use-ls-dired nil)
 
 (when (member "JuliaMono" (font-family-list))
   (set-face-attribute 'default nil

@@ -34,16 +34,21 @@
 ;;;;;;;;;;;;
 ;; yasnippet
 ;;;;;;;;;;;;
-(ensure-installed 'yasnippet)
+;(ensure-installed 'yasnippet)
 ;(require 'yasnippet)
+;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
+(autoload 'yas-minor-mode "yasnippet" "YASnippet minor mode." t)
+(autoload 'yas-reload-all "yasnippet" nil t)
+
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'Latex-mode-hook 'yas-minor-mode)
 
 ;;;;;;;;;;
 ;; paredit
 ;;;;;;;;;;
-(ensure-installed 'paredit)
+;(ensure-installed 'paredit)
 ;(require 'paredit)
+;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
 
