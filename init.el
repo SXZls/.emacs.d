@@ -1,6 +1,10 @@
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6
-      file-name-handler-alist nil)
+      file-name-handler-alist nil
+      jit-lock-defer-time 0
+      ;read-process-output-max (* 4 1024 1024)
+      ;process-adaptive-read-buffering nil  ;; LSP config
+      )
 (add-hook 'emacs-startup-hook
 	  (lambda ()
 	    (setq gc-cons-threshold 800000
