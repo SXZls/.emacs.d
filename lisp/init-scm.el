@@ -17,17 +17,17 @@
 
 (defun use-racket()
   (interactive)
-  (setq scheme-program-name (executable-find "racket"))
+  (setq scheme-program-name (excutable-find "racket"))
   (message "to racket"))
 
 (defun use-chez()
   (interactive)
-  (setq scheme-program-name (executable-find "scheme"))
+  (setq scheme-program-name (excutable-find "scheme"))
   (message "to chez"))
 
 (defun use-guile()
   (interactive)
-  (setq scheme-program-name (executable-find "scheme"))
+  (setq scheme-program-name (executable-find "guile"))
   (message "to guile"))
 
 ;; bypass the interactive question and start the default interpreter

@@ -13,9 +13,10 @@
 (defun env-os-path (path)
   (env-path (concat env-os "/" path)))
 
+;; excutable-find is like env-bin-path
 (defun env-bin-path (bin)
   (env-os-path (os-case (windows-nt (concat "bin/" bin ".exe"))
-                             (t (concat "bin/" bin)))))
+                        (t (concat "bin/" bin)))))
 
 (defun env-app-path (app path)
   (env-os-path (concat app "/" path)))
