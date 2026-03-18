@@ -29,18 +29,16 @@
 ;; Ensure these functions are called after `package-initialize`
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
-(require 'cl-lib)
+;(require 'cl-lib)
 
 (require 'init-package)
 
-(require 'init-utils)
+;(require 'init-utils)
 
 (require 'init-enhance)
 
 (require 'init-edit)
 
-(require 'init-cl)
-
-(require 'init-scm)
+(require 'init-lisp)
 
 (provide 'init)
