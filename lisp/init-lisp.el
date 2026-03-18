@@ -2,7 +2,8 @@
 ;; Scheme 
 ;;;;;;;;;
 
-(require 'cmuscheme)
+(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process" t)
+(autoload 'scheme-mode "cmuscheme" "Scheme mode" t)
 
 (setq scheme-program-name
       (cond
