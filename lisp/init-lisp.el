@@ -2,7 +2,7 @@
 ;; Scheme 
 ;;;;;;;;;
 
-(require 'cmuscheme)
+;(require 'cmuscheme)
 
 (setq scheme-program-name
       (cond

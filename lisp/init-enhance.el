@@ -1,9 +1,6 @@
-(require 'recentf)
-(require 'uniquify)
-
-(recentf-mode 1)
+(recentf-mode 1) ;; recentf file
 (save-place-mode 1)
-(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-buffer-name-style 'forward) ;; uniquify file name
 (setq-default fill-column 80)
 (setq-default indent-tabs-mode nil)
 (setq tab-always-indent 'complete)
