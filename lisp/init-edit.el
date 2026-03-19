@@ -58,6 +58,7 @@
 (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'ielm-mode-hook 'enable-paredit-mode)
+(add-hook 'scheme-mode-hook 'enable-paredit-mode)
 
 (put 'paredit-forward-delete 'delete-selection 'supersede)
 (put 'paredit-backward-delete 'delete-selection 'supersede)

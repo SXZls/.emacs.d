@@ -2,8 +2,7 @@
 ;; Scheme 
 ;;;;;;;;;
 
-(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process" t)
-(autoload 'scheme-mode "cmuscheme" "Scheme mode" t)
+(require 'cmuscheme)
 
 (setq scheme-program-name
       (cond
@@ -70,7 +69,7 @@
 
 (add-hook 'scheme-mode-hook
   (lambda ()
-    (paredit-mode 1)
+    ;(paredit-mode 1)
     (define-key scheme-mode-map (kbd "C-c C-s")
                 'scheme-send-last-sexp-split-window)
     (define-key scheme-mode-map (kbd "C-c C-d")
