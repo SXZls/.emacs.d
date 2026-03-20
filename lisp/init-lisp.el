@@ -3,6 +3,8 @@
 ;;;;;;;;;
 
 ;(require 'cmuscheme)
+(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process" t)
+(autoload 'scheme-mode "cmuscheme" "Scheme mode" t)
 
 (setq scheme-program-name
       (cond
@@ -17,12 +19,12 @@
 
 (defun use-racket()
   (interactive)
-  (setq scheme-program-name (excutable-find "racket"))
+  (setq scheme-program-name (executable-find "racket"))
   (message "to racket"))
 
 (defun use-chez()
   (interactive)
-  (setq scheme-program-name (excutable-find "scheme"))
+  (setq scheme-program-name (executable-find "scheme"))
   (message "to chez"))
 
 (defun use-guile()
