@@ -69,7 +69,7 @@
 
 (set-face-attribute
  'default nil
- :background (if (display-graphic-p) "#2b2b2b" "black");black or unspecified-gb 
+ :background (if (display-graphic-p) "#092b2e" "black");black or unspecified-gb 
  :foreground (if (display-graphic-p) "wheat" "white"))
 
 (setq custom-file (expand-file-name "custom.el"
