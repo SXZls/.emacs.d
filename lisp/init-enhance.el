@@ -59,6 +59,8 @@
 
 (when (member "JuliaMono" (font-family-list))
   (set-face-attribute 'default nil
+                      :background (if (display-graphic-p) "#022" "black");unspecified-gb 
+                      :foreground (if (display-graphic-p) "wheat" "white")
 		      :family "juliamono"
 		      :height 130))
 (defun to-unifont()
@@ -66,11 +68,6 @@
   (buffer-face-set '(:family "Unifont" :height 160)))
 (global-set-key (kbd"C-c u")
                 'to-unifont)
-
-(set-face-attribute
- 'default nil
- :background (if (display-graphic-p) "#020" "black");black or unspecified-gb 
- :foreground (if (display-graphic-p) "wheat" "white"))
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "lisp/")))
