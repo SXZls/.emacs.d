@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (cl-defmacro os-case (&body cases)
   `(cond ,@(cl-loop for case in cases collect
                     (if (eql (car case) t)

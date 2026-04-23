@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (mapcar
  (function (lambda (setting)
              (setq auto-mode-alist

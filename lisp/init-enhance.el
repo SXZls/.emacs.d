@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (recentf-mode 1) ;; recentf file
 (save-place-mode 1)
 (setq uniquify-buffer-name-style 'forward) ;; uniquify file name
@@ -57,12 +59,12 @@
       dired-recursive-deletes 'top
       dired-use-ls-dired nil)
 
-(when (member "JuliaMono" (font-family-list))
-  (set-face-attribute 'default nil
-                      :background (if (display-graphic-p) "#022" "black");unspecified-gb 
-                      :foreground (if (display-graphic-p) "wheat" "white")
-		      :family "juliamono"
-		      :height 130))
+(set-face-attribute 'default nil
+                    :background (if (display-graphic-p) "#122" "black");unspecified-gb
+                    :foreground (if (display-graphic-p) "wheat" "white")
+		    :family "juliamono"
+		    :height 130)
+
 (defun to-unifont()
   (interactive)
   (buffer-face-set '(:family "Unifont" :height 160)))
