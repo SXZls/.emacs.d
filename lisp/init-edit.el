@@ -36,7 +36,7 @@
 ;;;;;;;;;;;;
 ;; yasnippet
 ;;;;;;;;;;;;
-;(ensure-installed 'yasnippet)
+(ensure-installed 'yasnippet)
 ;(require 'yasnippet)
 ;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 (autoload 'yas-minor-mode "yasnippet" "YASnippet minor mode." t)
@@ -48,7 +48,7 @@
 ;;;;;;;;;;
 ;; paredit
 ;;;;;;;;;;
-;(ensure-installed 'paredit)
+(ensure-installed 'paredit)
 ;(require 'paredit)
 ;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 

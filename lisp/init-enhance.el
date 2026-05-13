@@ -60,7 +60,7 @@
       dired-use-ls-dired nil)
 
 (set-face-attribute 'default nil
-                    :background (if (display-graphic-p) "#000" "#000");unspecified-gb
+                    :background (if (display-graphic-p) "#022" "#000");unspecified-gb
                     :foreground (if (display-graphic-p) "wheat" "#fff")
 		    :family "juliamono"
 		    :height 130)
