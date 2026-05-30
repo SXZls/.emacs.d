@@ -88,28 +88,20 @@
       scroll-conservatively 97
       scroll-preserve-screen-position t
       treesit-extra-load-path (executable-find "tree-sitter")
+      isearch-allow-scroll t
       save-abbrevs nil ;; abbrev
       my-abbrevs-file (expand-file-name
                        "site-lisp/abbrevs.el"
                        user-emacs-directory);; abbrev
-      isearch-allow-scroll t
       )
 
 (if (file-exists-p my-abbrevs-file)
     (read-abbrev-file my-abbrevs-file))
-
 (global-set-key (kbd "M-/") 'dabbrev-expand)
 
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
-;;; dired
-(add-hook 'dired-load-hook
-          (function (lambda ()
-                      (load "dired-x"))))
-(setq dired-recursive-copies 'top
-      dired-recursive-deletes 'top
-      dired-use-ls-dired nil)
 
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p) "#111" "unspecified")
@@ -139,6 +131,14 @@
    ("\\.rkt\\'" . scheme-mode)
    ("\\.ss\\'" . scheme-mode)))
 ;; easy to add-mode-list.
+;;;;;;;;;
+;;; dired
+(add-hook 'dired-load-hook
+          (function (lambda ()
+                      (load "dired-x"))))
+(setq dired-recursive-copies 'top
+      dired-recursive-deletes 'top
+      dired-use-ls-dired nil)
 
 ;;;;;;;;
 ;; magit
