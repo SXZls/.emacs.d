@@ -10,13 +10,9 @@
 		  gc-cons-percentage 0.1
                   file-name-handler-alist (default-value 'file-name-handler-alist))))
 
-(defun update-load-path (&rest _)
-  "Update the `load-path` to prioritize personal configurations."
-  (dolist (dir '("site-lisp" "lisp"))
-    (push (expand-file-name dir user-emacs-directory) load-path)))
-
-;; Initialize load paths explicitly
-(update-load-path)
+"Update the `load-path` to prioritize personal configurations."
+(dolist (dir '("site-lisp" "lisp"))
+  (push (expand-file-name dir user-emacs-directory) load-path))
 
 ;; Add subdirectories inside "site-lisp" to `load-path`
 (defun add-subdirs-to-load-path (&rest _)
@@ -214,32 +210,12 @@
   (setq scheme-program-name (executable-find "guile"))
   (message "to guile"))
 
-;; bypass the interactive question and start the default interpreter
-(defun scheme-proc ()
-  "Return the current Scheme process, starting one if necessary."
-  (unless (and scheme-buffer
-               (get-buffer scheme-buffer)
-               (comint-check-proc scheme-buffer))
-    (save-window-excursion
-      (run-scheme scheme-program-name)))
-  (or (scheme-get-process)
-      (error "No current process. See variable `scheme-buffer'")))
-
-(defun switch-other-window-to-buffer (name)
-    (other-window 1)
-    (switch-to-buffer name)
-    (other-window 1))
-
 (defun scheme-split-window ()
-  (cond
-   ((= 1 (count-windows))
-    (split-window-vertically (floor (* 0.68 (window-height))))
-    ;; (split-window-horizontally (floor (* 0.5 (window-width))))
-    (switch-other-window-to-buffer "*scheme*"))
-   ((not (member "*scheme*"
-               (mapcar (lambda (w) (buffer-name (window-buffer w)))
-                       (window-list))))
-    (switch-other-window-to-buffer "*scheme*"))))
+  (unless (get-buffer-window "*scheme*")
+    (when (= 1 (count-windows))
+      (split-window-vertically (floor (* 0.68 (window-height)))))
+    (with-selected-window (next-window)
+      (switch-to-buffer "*scheme*"))))
 
 (defun scheme-send-last-sexp-split-window ()
   (interactive)
