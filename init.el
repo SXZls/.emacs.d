@@ -189,26 +189,18 @@
 (autoload 'scheme-mode "cmuscheme" "Scheme mode" t)
 
 (setq scheme-program-name
-      (cond
-       ((executable-find "scheme"))
-       ((executable-find "racket"))
-       ((executable-find "guile"))
-       (t "scheme")))
+      (or (executable-find "scheme")
+          (executable-find "racket")
+          (executable-find "guile")
+          "scheme"))
 
-(defun use-racket()
-  (interactive)
-  (setq scheme-program-name (executable-find "racket"))
-  (message "to racket"))
-
-(defun use-chez()
-  (interactive)
-  (setq scheme-program-name (executable-find "scheme"))
-  (message "to chez"))
-
-(defun use-guile()
-  (interactive)
-  (setq scheme-program-name (executable-find "guile"))
-  (message "to guile"))
+(defun use-scheme (program)
+  (interactive
+   (list (completing-read "Scheme inerpreter:"
+                          '("scheme" "racket" "guile") nil t)))
+  (if-let ((path (executable-find program)))
+      (progn (setq scheme-program-name path))
+    (user-error "Cannot find '%s' in PATH" program)))
 
 (defun scheme-split-window ()
   (unless (get-buffer-window "*scheme*")
@@ -247,21 +239,19 @@
 (autoload 'sly "sly" "Start SLY" t)
 (autoload 'sly-mode "sly" "SLY mode" t)
 
-(setq sly-auto-select-connection 'always)
-;(setq sly-kill-without-query-p t)
-(setq sly-description-autofocus t) 
-(setq sly-inhibit-pipelining nil)
-(setq sly-load-failed-fasl 'always)
+(setq sly-auto-select-connection 'always
+      ;sly-kill-without-query-p t
+      sly-description-autofocus t 
+      sly-inhibit-pipelining nil
+      sly-load-failed-fasl 'always
+      ;; XXX: Work around a bug in SLY whereby installing/compiling it as
+      ;; above fails to correctly set version (not very problematic for
+      ;; Portacle, which always ensures matching versions anyway)
+      sly-ignore-protocol-mismatches t
 
-;; XXX: Work around a bug in SLY whereby installing/compiling it as
-;; above fails to correctly set version (not very problematic for
-;; Portacle, which always ensures matching versions anyway)
-(setq sly-ignore-protocol-mismatches t)
-
-;; Make sure SLY knows about our SBCL
-(setq sly-lisp-implementations
+      ;; Make sure SLY knows about our SBCL
+      sly-lisp-implementations
       `((sbcl (,(executable-find "sbcl") "--dynamic-space-size" "256"))))
-
 ;; Don't turn on paredit in REPL, but at least use electric-pair-mode
 (add-hook 'sly-mrepl-mode-hook 'electric-pair-local-mode)
 
