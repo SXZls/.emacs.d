@@ -10,10 +10,7 @@
 		  gc-cons-percentage 0.1
                   file-name-handler-alist (default-value 'file-name-handler-alist))))
 
-"Update the `load-path` to prioritize personal configurations."
-(dolist (dir '("site-lisp" "lisp"))
-  (push (expand-file-name dir user-emacs-directory) load-path))
-
+(add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 ;; Add subdirectories inside "site-lisp" to `load-path`
 (defun add-subdirs-to-load-path (&rest _)
   "Recursively add subdirectories in `site-lisp` to `load-path`.
@@ -85,6 +82,9 @@
       scroll-preserve-screen-position t
       treesit-extra-load-path (executable-find "tree-sitter")
       isearch-allow-scroll t
+      redisplay-skip-fontification-on-input t
+      save-interprogram-paste-before-kill t
+      kill-do-not-save-duplicates t
       save-abbrevs nil ;; abbrev
       my-abbrevs-file (expand-file-name
                        "site-lisp/abbrevs.el"
