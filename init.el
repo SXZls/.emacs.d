@@ -101,7 +101,7 @@
 
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p) "grey10" "unspecified")
-                    :foreground (if (display-graphic-p) "wheat" "white")
+                    :foreground (if (display-graphic-p) "wheat" "unspecified-fg")
 		    :family "juliamono"
 		    :height 130)
 
