@@ -88,7 +88,7 @@
       save-abbrevs nil ;; abbrev
       my-abbrevs-file (expand-file-name
                        "site-lisp/abbrevs.el"
-                       user-emacs-directory);; abbrev
+                       user-emacs-directory);; abbrev6
       )
 
 (if (file-exists-p my-abbrevs-file)
@@ -100,8 +100,8 @@
 (put 'downcase-region 'disabled nil)
 
 (set-face-attribute 'default nil
-                    :background (if (display-graphic-p) "#111" "unspecified")
-                    :foreground (if (display-graphic-p) "wheat" "#fff")
+                    :background (if (display-graphic-p) "grey10" "unspecified")
+                    :foreground (if (display-graphic-p) "wheat" "white")
 		    :family "juliamono"
 		    :height 130)
 
@@ -226,9 +226,7 @@
                 'scheme-send-last-sexp-split-window)
     (define-key scheme-mode-map (kbd "C-c C-d")
                 'scheme-send-definition-split-window)
-    (local-set-key (kbd "C-c c") 'use-chez)
-    (local-set-key (kbd "C-c r") 'use-racket)
-    (local-set-key (kbd "C-c g") 'use-guile)))
+    (local-set-key (kbd "C-c C-p") 'use-scheme)))
 
 ;;;;;;;;;;;;;;
 ;; common lisp

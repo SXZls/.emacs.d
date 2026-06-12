@@ -14,6 +14,6 @@
       auto-mode-case-fold nil
 
       default-frame-alist
-      '((vertical-scroll-bars . nil)
+      '(;(vertical-scroll-bars . nil)
         (menu-bar-lines . 0)
         (tool-bar-lines . 0)))
