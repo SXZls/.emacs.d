@@ -100,8 +100,8 @@
 (put 'downcase-region 'disabled nil)
 
 (set-face-attribute 'default nil
-                    :background (if (display-graphic-p) "grey10" "unspecified-bg")
-                    :foreground (if (display-graphic-p) "wheat" "unspecified-fg")
+                    :background (if (display-graphic-p) "grey10" "nil")
+                    :foreground (if (display-graphic-p) "wheat" "nil")
 		    :family "juliamono"
 		    :height 130)
 
