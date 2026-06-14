@@ -50,8 +50,7 @@
         (package-install package)))))
 ;;;;;;;;;;
 ;; enhance
-(setq-default fill-column 80
-              indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 (recentf-mode 1) ;; recentf file
 (save-place-mode 1)
@@ -59,10 +58,6 @@
 ;(global-display-line-numbers-mode t)
 (column-number-mode 1)
 (ido-mode 1)
-(global-font-lock-mode 1)
-(transient-mark-mode 1)
-(auto-compression-mode 1)
-(auto-fill-mode 1)
 (prefer-coding-system 'utf-8)
 (auto-image-file-mode 1)
 
@@ -71,11 +66,6 @@
       visible-bell 1
       track-eol 1
       kill-whole-line 1
-      sentence-end
-      "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*"
-      sentence-end-double-space nil
-      ;; Setting sentence-end can recognize Chinese punctuation.
-      ;There is no need to insert two spaces when filling.
       enable-recursive-minibuffers t
       treesit-extra-load-path (executable-find "tree-sitter")
       isearch-allow-scroll t
@@ -85,8 +75,10 @@
       )
 
 (set-face-attribute 'default nil
-                    :background (if (display-graphic-p) "grey10" "nil")
-                    :foreground (if (display-graphic-p) "wheat" "nil")
+                    :background (if (display-graphic-p)
+                                    "grey10" "unspecified-bg")
+                    :foreground (if (display-graphic-p)
+                                    "wheat" "unspecified-fg")
 		    :family "juliamono"
 		    :height 130)
 
