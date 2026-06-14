@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;; -*-lexical-binding: t; -*-
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6
       file-name-handler-alist nil
@@ -51,8 +51,7 @@
 ;;;;;;;;;;
 ;; enhance
 (setq-default fill-column 80
-              indent-tabs-mode nil
-              abbrev-mode t)
+              indent-tabs-mode nil)
 
 (recentf-mode 1) ;; recentf file
 (save-place-mode 1)
@@ -78,26 +77,12 @@
       ;; Setting sentence-end can recognize Chinese punctuation.
       ;There is no need to insert two spaces when filling.
       enable-recursive-minibuffers t
-      scroll-conservatively 97
-      scroll-preserve-screen-position t
       treesit-extra-load-path (executable-find "tree-sitter")
       isearch-allow-scroll t
       redisplay-skip-fontification-on-input t
       save-interprogram-paste-before-kill t
       kill-do-not-save-duplicates t
-      save-abbrevs nil ;; abbrev
-      my-abbrevs-file (expand-file-name
-                       "site-lisp/abbrevs.el"
-                       user-emacs-directory);; abbrev6
       )
-
-(if (file-exists-p my-abbrevs-file)
-    (read-abbrev-file my-abbrevs-file))
-(global-set-key (kbd "M-/") 'dabbrev-expand)
-
-(put 'set-goal-column 'disabled nil)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
 
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p) "grey10" "nil")
@@ -114,7 +99,7 @@
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory "site-lisp/")))
 (when (file-exists-p custom-file)
- (load-file custom-file))
+  (load-file custom-file))
 
 (mapcar
  (function (lambda (setting)
@@ -127,6 +112,14 @@
    ("\\.rkt\\'" . scheme-mode)
    ("\\.ss\\'" . scheme-mode)))
 ;; easy to add-mode-list.
+;;;;;;;;;
+;; abbrev
+(setq my-abbrevs-file (expand-file-name
+                       "site-lisp/abbrevs.el"
+                       user-emacs-directory))
+(if (file-exists-p my-abbrevs-file)
+    (read-abbrev-file my-abbrevs-file))
+(global-set-key (kbd "M-/") 'dabbrev-expand)
 ;;;;;;;;;
 ;;; dired
 (add-hook 'dired-load-hook
@@ -158,7 +151,6 @@
 ;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 (autoload 'yas-minor-mode "yasnippet" "YASnippet minor mode." t)
 (autoload 'yas-reload-all "yasnippet" nil t)
-
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'Latex-mode-hook 'yas-minor-mode)
 
@@ -220,13 +212,13 @@
   (scheme-send-definition))
 
 (add-hook 'scheme-mode-hook
-  (lambda ()
-    ;(paredit-mode 1)
-    (define-key scheme-mode-map (kbd "C-c C-s")
-                'scheme-send-last-sexp-split-window)
-    (define-key scheme-mode-map (kbd "C-c C-d")
-                'scheme-send-definition-split-window)
-    (local-set-key (kbd "C-c C-p") 'use-scheme)))
+          (lambda ()
+            ;(paredit-mode 1)
+            (define-key scheme-mode-map (kbd "C-c C-s")
+                        'scheme-send-last-sexp-split-window)
+            (define-key scheme-mode-map (kbd "C-c C-d")
+                        'scheme-send-definition-split-window)
+            (local-set-key (kbd "C-c C-p") 'use-scheme)))
 
 ;;;;;;;;;;;;;;
 ;; common lisp
@@ -252,7 +244,6 @@
       `((sbcl (,(executable-find "sbcl") "--dynamic-space-size" "256"))))
 ;; Don't turn on paredit in REPL, but at least use electric-pair-mode
 (add-hook 'sly-mrepl-mode-hook 'electric-pair-local-mode)
-
 ;; Make sure we don't clash with SLIME when starting
 (add-hook 'lisp-mode-hook 'sly-mode)
 
