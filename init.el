@@ -2,52 +2,52 @@
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6
       file-name-handler-alist nil
-      jit-lock-defer-time 0
-      )
+      inhibit-startup-screen t
+      initial-major-mode 'fundamental-mode
+      auto-mode-case-fold nil)
 (add-hook 'emacs-startup-hook
 	  (lambda ()
-	    (setq gc-cons-threshold 800000
+	    (setq gc-cons-threshold (* 16 1024 1024)
 		  gc-cons-percentage 0.1
                   file-name-handler-alist (default-value 'file-name-handler-alist))))
 
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-;; Add subdirectories inside "site-lisp" to `load-path`
-(defun add-subdirs-to-load-path (&rest _)
-  "Recursively add subdirectories in `site-lisp` to `load-path`.
-   Avoid placing large files like EAF in `site-lisp` to prevent slow startup."
-  (let ((default-directory (expand-file-name "site-lisp" user-emacs-directory)))
-    (normal-top-level-add-subdirs-to-load-path)))
 
+;; Recursively add subdirectories in `site-lisp` to `load-path`.
+;; Avoid placing large files like EAF in `site-lisp` to prevent slow startup.
 ;; Ensure these functions are called after `package-initialize`
-(advice-add #'package-initialize :after #'add-subdirs-to-load-path)
+(advice-add #'package-initialize :after
+            (lambda (&rest _)
+              (let ((default-directory
+                     (expand-file-name "site-lisp" user-emacs-directory)))
+                (normal-top-level-add-subdirs-to-load-path))))
 
 ;;;;;;;;;;
 ;; package
-(require 'package)
-
-(add-to-list 'package-archives '("melpa"  . "https://melpa.org/packages/") t)
-
 (package-initialize)
 
-(defvar *package-lists-fetched* nil)
+(add-to-list 'package-archives
+             '(("melpa" . "https://melpa.org/packages/")
+               ("nongnu" . "https://elpa.nongnu.org/packages/")
+               ("gnu" . "https://elpa.gnu.org/packages/")))
 
-(defun soft-fetch-package-lists ()
-  (unless *package-lists-fetched*
+(defvar package-contents-refreshed nil)
+
+(defun package-ensure-refreshed ()
+  (unless package-contents-refreshed
     (package-refresh-contents)
-    (setf *package-lists-fetched* t)))
+    (setq package-contents-refreshed t)))
 
-;; package-installed-p will always report NIL if a newer
 ;; version is available. We do not want that.
 (defun package-locally-installed-p (package)
-  (assq package package-alist))
+  (or (assq package package-alist)
+      (package-built-in-p package)))
 
 (defun ensure-installed (&rest packages)
-  (unless (cl-loop for package in packages
-                   always (package-locally-installed-p package))
-    (soft-fetch-package-lists)
-    (dolist (package packages)
-      (unless (package-locally-installed-p package)
-        (package-install package)))))
+  (when-let ((missing (cl-remove-if
+                       #'package-locally-installed-p packages)))
+    (package-ensure-refreshed)
+    (mapc #'package-install missing)))
 ;;;;;;;;;;
 ;; enhance
 (setq-default indent-tabs-mode nil)
@@ -71,12 +71,11 @@
       isearch-allow-scroll t
       redisplay-skip-fontification-on-input t
       save-interprogram-paste-before-kill t
-      kill-do-not-save-duplicates t
-      )
+      kill-do-not-save-duplicates t)
 
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
-                                    "grey10" "unspecified-bg")
+                                    "black" "unspecified-bg")
                     :foreground (if (display-graphic-p)
                                     "wheat" "unspecified-fg")
 		    :family "juliamono"
@@ -89,7 +88,8 @@
                 'to-unifont)
 
 (setq custom-file (expand-file-name "custom.el"
-                                    (concat user-emacs-directory "site-lisp/")))
+                                    (concat user-emacs-directory
+                                            "site-lisp/")))
 (when (file-exists-p custom-file)
   (load-file custom-file))
 
@@ -109,17 +109,15 @@
 (setq my-abbrevs-file (expand-file-name
                        "site-lisp/abbrevs.el"
                        user-emacs-directory))
-(if (file-exists-p my-abbrevs-file)
-    (read-abbrev-file my-abbrevs-file))
-(global-set-key (kbd "M-/") 'dabbrev-expand)
+(when (file-exists-p my-abbrevs-file)
+  (read-abbrev-file my-abbrevs-file))
 ;;;;;;;;;
 ;;; dired
 (add-hook 'dired-load-hook
           (function (lambda ()
                       (load "dired-x"))))
 (setq dired-recursive-copies 'top
-      dired-recursive-deletes 'top
-      dired-use-ls-dired nil)
+      dired-recursive-deletes 'top)
 
 ;;;;;;;;
 ;; magit
@@ -152,7 +150,7 @@
 ;(require 'paredit)
 ;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+(autoload 'enable-paredit-mode "paredit" "Paredit of Lisp code." t)
 
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
@@ -197,7 +195,6 @@
   (interactive)
   (scheme-split-window)
   (scheme-send-last-sexp))
-
 (defun scheme-send-definition-split-window ()
   (interactive)
   (scheme-split-window)
