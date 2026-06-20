@@ -18,7 +18,6 @@
 (let ((default-directory
        (expand-file-name "site-lisp" user-emacs-directory)))
   (normal-top-level-add-subdirs-to-load-path))
-
 ;;;;;;;;;;
 ;; package
 (add-to-list 'package-archives
@@ -46,29 +45,28 @@
 ;;;;;;;;;;
 ;; enhance
 (setq-default indent-tabs-mode nil)
-
-(recentf-mode 1) ;; recentf file
+(recentf-mode 1)
 (save-place-mode 1)
 (electric-pair-mode 1)
-;(global-display-line-numbers-mode t)
+;(global-display-line-numbers-mode 1)
 (column-number-mode 1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (ido-mode 1)
 (prefer-coding-system 'utf-8)
 (auto-image-file-mode 1)
-
 (setq uniquify-buffer-name-style 'forward
       tab-always-indent 'complete
       visible-bell 1
       track-eol 1
       kill-whole-line 1
-      enable-recursive-minibuffers t
+      enable-recursive-minibuffers 1
       treesit-extra-load-path (executable-find "tree-sitter")
-      isearch-allow-scroll t
-      redisplay-skip-fontification-on-input t
-      save-interprogram-paste-before-kill t
-      kill-do-not-save-duplicates t)
+      isearch-allow-scroll 1
+      redisplay-skip-fontification-on-input 1
+      save-interprogram-paste-before-kill 1
+      kill-do-not-save-duplicates 1
+      buffer-face-mode-face '(:family "Unifont" :height 160))
 
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
@@ -76,13 +74,7 @@
                     :foreground (if (display-graphic-p)
                                     "wheat" "unspecified-fg")
 		    :family "juliamono"
-		    :height 130)
-
-(defun to-unifont()
-  (interactive)
-  (buffer-face-set '(:family "Unifont" :height 160)))
-(global-set-key (kbd"C-c u")
-                'to-unifont)
+		    :height 120)
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory
@@ -115,7 +107,6 @@
                       (load "dired-x"))))
 (setq dired-recursive-copies 'top
       dired-recursive-deletes 'top)
-
 ;;;;;;;;
 ;; magit
 (ensure-installed 'magit)
