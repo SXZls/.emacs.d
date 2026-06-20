@@ -15,17 +15,12 @@
 
 ;; Recursively add subdirectories in `site-lisp` to `load-path`.
 ;; Avoid placing large files like EAF in `site-lisp` to prevent slow startup.
-;; Ensure these functions are called after `package-initialize`
-(advice-add #'package-initialize :after
-            (lambda (&rest _)
-              (let ((default-directory
-                     (expand-file-name "site-lisp" user-emacs-directory)))
-                (normal-top-level-add-subdirs-to-load-path))))
+(let ((default-directory
+       (expand-file-name "site-lisp" user-emacs-directory)))
+  (normal-top-level-add-subdirs-to-load-path))
 
 ;;;;;;;;;;
 ;; package
-(package-initialize)
-
 (add-to-list 'package-archives
              '(("melpa" . "https://melpa.org/packages/")
                ("nongnu" . "https://elpa.nongnu.org/packages/")
@@ -57,6 +52,8 @@
 (electric-pair-mode 1)
 ;(global-display-line-numbers-mode t)
 (column-number-mode 1)
+(tool-bar-mode -1)
+(menu-bar-mode -1)
 (ido-mode 1)
 (prefer-coding-system 'utf-8)
 (auto-image-file-mode 1)
