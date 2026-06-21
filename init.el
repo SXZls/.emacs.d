@@ -11,7 +11,6 @@
                   file-name-handler-alist file-name-handler-alist--orig)))
 
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
-
 ;; Recursively add subdirectories in `site-lisp` to `load-path`.
 ;; Avoid placing large files like EAF in `site-lisp` to prevent slow startup.
 (let ((default-directory
@@ -117,14 +116,12 @@
   (setq magit-auto-select-connection 'always)
   ;; other configs
 )
-
 ;;;;;;;;;;;;
 ;; yasnippet
 (autoload 'yas-minor-mode "yasnippet" "YASnippet minor mode." t)
 (autoload 'yas-reload-all "yasnippet" nil t)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'LaTeX-mode-hook 'yas-minor-mode)
-
 ;;;;;;;;;;
 ;; paredit
 (autoload 'enable-paredit-mode "paredit" "Paredit of Lisp code." t)
@@ -137,7 +134,6 @@
 (put 'paredit-forward-delete 'delete-selection 'supersede)
 (put 'paredit-backward-delete 'delete-selection 'supersede)
 (put 'paredit-newline 'delete-selection t)
-
 ;;;;;;;;;
 ;; Scheme 
 ;(require 'cmuscheme)
@@ -149,7 +145,6 @@
           (executable-find "racket")
           (executable-find "guile")
           "scheme"))
-
 (defun use-scheme (program)
   (interactive
    (list (completing-read "Scheme inerpreter:"
@@ -157,7 +152,6 @@
   (if-let ((path (executable-find program)))
       (progn (setq scheme-program-name path))
     (user-error "Cannot find '%s' in PATH" program)))
-
 (defun scheme-split-window ()
   (unless (get-buffer-window "*scheme*")
     (when (= 1 (count-windows))
@@ -175,13 +169,11 @@
 
 (add-hook 'scheme-mode-hook
           (lambda ()
-            ;(paredit-mode 1)
             (define-key scheme-mode-map (kbd "C-c C-s")
                         'scheme-send-last-sexp-split-window)
             (define-key scheme-mode-map (kbd "C-c C-d")
                         'scheme-send-definition-split-window)
             (local-set-key (kbd "C-c C-p") 'use-scheme)))
-
 ;;;;;;;;;;;;;;
 ;; common lisp
 (remove-hook 'lisp-mode-hook 'cl-lisp-mode-hook)
@@ -200,5 +192,3 @@
 (add-hook 'sly-mrepl-mode-hook 'electric-pair-local-mode)
 ;; Make sure we don't clash with SLIME when starting
 (add-hook 'lisp-mode-hook 'sly-mode)
-
-(provide 'init)
