@@ -41,7 +41,7 @@
     (package-ensure-refreshed)
     (mapc #'package-install missing)))
 
-(ensure-installed 'magit paredit yasnippet sly)
+(ensure-installed 'magit 'paredit 'yasnippet 'sly)
 ;;;;;;;;;;
 ;; enhance
 (setq-default indent-tabs-mode nil)
