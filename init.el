@@ -1,15 +1,13 @@
 ;; -*-lexical-binding: t; -*-
+(defvar file-name-handler-alist--orig file-name-handler-alist)
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6
-      file-name-handler-alist nil
-      inhibit-startup-screen t
-      initial-major-mode 'fundamental-mode
-      auto-mode-case-fold nil)
+      file-name-handler-alist nil)
 (add-hook 'emacs-startup-hook
 	  (lambda ()
 	    (setq gc-cons-threshold (* 16 1024 1024)
 		  gc-cons-percentage 0.1
-                  file-name-handler-alist (default-value 'file-name-handler-alist))))
+                  file-name-handler-alist file-name-handler-alist--orig)))
 
 (add-to-list 'load-path (expand-file-name "site-lisp" user-emacs-directory))
 
@@ -20,7 +18,7 @@
   (normal-top-level-add-subdirs-to-load-path))
 ;;;;;;;;;;
 ;; package
-(add-to-list 'package-archives
+(setq package-archives
              '(("melpa" . "https://melpa.org/packages/")
                ("nongnu" . "https://elpa.nongnu.org/packages/")
                ("gnu" . "https://elpa.gnu.org/packages/")))
@@ -32,7 +30,6 @@
     (package-refresh-contents)
     (setq package-contents-refreshed t)))
 
-;; version is available. We do not want that.
 (defun package-locally-installed-p (package)
   (or (assq package package-alist)
       (package-built-in-p package)))
@@ -66,15 +63,19 @@
       redisplay-skip-fontification-on-input 1
       save-interprogram-paste-before-kill 1
       kill-do-not-save-duplicates 1
+      inhibit-startup-screen 1
+      initial-major-mode 'fundamental-mode
+      frame-inhibit-implied-resize 1
+      auto-mode-case-fold nil
       buffer-face-mode-face '(:family "Unifont" :height 160))
 
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
-                                    "#292b2e" "unspecified-bg")
+                                    "#282a2e" "unspecified-bg")
                     :foreground (if (display-graphic-p)
                                     "wheat" "unspecified-fg")
 		    :family "juliamono"
-		    :height 120)
+                    :height 120)
 
 (setq custom-file (expand-file-name "custom.el"
                                     (concat user-emacs-directory
@@ -82,16 +83,13 @@
 (when (file-exists-p custom-file)
   (load-file custom-file))
 
-(mapcar
- (function (lambda (setting)
-             (setq auto-mode-alist
-                   (cons setting auto-mode-alist))))
- '(("\\.l\\'" . c-mode)
-   ("\\.cl\\'" . lisp-mode)
-   ("\\.lisp\\'" . lisp-mode)
-   ("\\.scm\\'" . scheme-mode)
-   ("\\.rkt\\'" . scheme-mode)
-   ("\\.ss\\'" . scheme-mode)))
+(dolist (pair '(("\\.l\\'" . c-mode)
+           ("\\.cl\\'" . lisp-mode)
+           ("\\.lisp\\'" . lisp-mode)
+           ("\\.scm\\'" . scheme-mode)
+           ("\\.rkt\\'" . scheme-mode)
+           ("\\.ss\\'" . scheme-mode)))
+  (add-to-list 'auto-mode-alist pair))
 ;; easy to add-mode-list.
 ;;;;;;;;;
 ;; abbrev
