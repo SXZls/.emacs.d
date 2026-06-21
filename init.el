@@ -70,7 +70,7 @@
 
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
-                                    "#022" "unspecified-bg")
+                                    "#001e1e" "unspecified-bg")
                     :foreground (if (display-graphic-p)
                                     "wheat" "unspecified-fg")
 		    :family "juliamono"
