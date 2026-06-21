@@ -40,6 +40,8 @@
                        #'package-locally-installed-p packages)))
     (package-ensure-refreshed)
     (mapc #'package-install missing)))
+
+(ensure-installed 'magit paredit yasnippet sly)
 ;;;;;;;;;;
 ;; enhance
 (setq-default indent-tabs-mode nil)
@@ -105,7 +107,6 @@
       dired-recursive-deletes 'top)
 ;;;;;;;;
 ;; magit
-(ensure-installed 'magit)
 (autoload 'magit-status "magit" "Magit status." t)
 (autoload 'magit-blame "magit" "Blame current file." t)
 (autoload 'magit-log-buffer-file "magit" "Log current file." t)
@@ -119,7 +120,6 @@
 
 ;;;;;;;;;;;;
 ;; yasnippet
-(ensure-installed 'yasnippet)
 (autoload 'yas-minor-mode "yasnippet" "YASnippet minor mode." t)
 (autoload 'yas-reload-all "yasnippet" nil t)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
@@ -127,7 +127,6 @@
 
 ;;;;;;;;;;
 ;; paredit
-(ensure-installed 'paredit)
 (autoload 'enable-paredit-mode "paredit" "Paredit of Lisp code." t)
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
@@ -186,8 +185,6 @@
 ;;;;;;;;;;;;;;
 ;; common lisp
 (remove-hook 'lisp-mode-hook 'cl-lisp-mode-hook)
-
-(ensure-installed 'sly)
 (autoload 'sly "sly" "Start SLY" t)
 (autoload 'sly-mode "sly" "SLY mode" t)
 
