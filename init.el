@@ -53,10 +53,7 @@
 (prefer-coding-system 'utf-8)
 (auto-image-file-mode 1)
 (setq uniquify-buffer-name-style 'forward
-      tab-always-indent 'complete
       visible-bell 1
-      track-eol 1
-      kill-whole-line 1
       enable-recursive-minibuffers 1
       treesit-extra-load-path (executable-find "tree-sitter")
       isearch-allow-scroll 1
@@ -108,7 +105,6 @@
 ;;;;;;;;
 ;; magit
 (ensure-installed 'magit)
-;(require 'magit)
 (autoload 'magit-status "magit" "Magit status." t)
 (autoload 'magit-blame "magit" "Blame current file." t)
 (autoload 'magit-log-buffer-file "magit" "Log current file." t)
@@ -118,34 +114,27 @@
 (with-eval-after-load 'magit
   (setq magit-auto-select-connection 'always)
   ;; other configs
-  )
+)
 
 ;;;;;;;;;;;;
 ;; yasnippet
 (ensure-installed 'yasnippet)
-;(require 'yasnippet)
-;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
 (autoload 'yas-minor-mode "yasnippet" "YASnippet minor mode." t)
 (autoload 'yas-reload-all "yasnippet" nil t)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
-(add-hook 'Latex-mode-hook 'yas-minor-mode)
+(add-hook 'LaTeX-mode-hook 'yas-minor-mode)
 
 ;;;;;;;;;;
 ;; paredit
 (ensure-installed 'paredit)
-;(require 'paredit)
-;(add-to-list 'load-path "~/.emacs.d/site-lisp/")
-
 (autoload 'enable-paredit-mode "paredit" "Paredit of Lisp code." t)
-
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-;(add-hook 'slime-repl-mode-hook 'enable-paredit-mode)
+(add-hook 'sly-mrepl-mode-hook 'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'ielm-mode-hook 'enable-paredit-mode)
 (add-hook 'scheme-mode-hook 'enable-paredit-mode)
-
 (put 'paredit-forward-delete 'delete-selection 'supersede)
 (put 'paredit-backward-delete 'delete-selection 'supersede)
 (put 'paredit-newline 'delete-selection t)
@@ -200,7 +189,6 @@
 (remove-hook 'lisp-mode-hook 'cl-lisp-mode-hook)
 
 (ensure-installed 'sly)
-;(require 'sly)
 (autoload 'sly "sly" "Start SLY" t)
 (autoload 'sly-mode "sly" "SLY mode" t)
 
