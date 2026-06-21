@@ -2,7 +2,8 @@
 (defvar file-name-handler-alist--orig file-name-handler-alist)
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6
-      file-name-handler-alist nil)
+      file-name-handler-alist nil
+      jit-lock-defer-time 0.05)
 (add-hook 'emacs-startup-hook
 	  (lambda ()
 	    (setq gc-cons-threshold (* 16 1024 1024)
@@ -130,7 +131,6 @@
 (autoload 'enable-paredit-mode "paredit" "Paredit of Lisp code." t)
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'lisp-interaction-mode-hook 'enable-paredit-mode)
-(add-hook 'sly-mrepl-mode-hook 'enable-paredit-mode)
 (add-hook 'eval-expression-minibuffer-setup-hook 'enable-paredit-mode)
 (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
 (add-hook 'ielm-mode-hook 'enable-paredit-mode)
@@ -165,7 +165,6 @@
       (split-window-vertically (floor (* 0.68 (window-height)))))
     (with-selected-window (next-window)
       (switch-to-buffer "*scheme*"))))
-
 (defun scheme-send-last-sexp-split-window ()
   (interactive)
   (scheme-split-window)
@@ -197,11 +196,6 @@
       sly-description-autofocus t 
       sly-inhibit-pipelining nil
       sly-load-failed-fasl 'always
-      ;; XXX: Work around a bug in SLY whereby installing/compiling it as
-      ;; above fails to correctly set version (not very problematic for
-      ;; Portacle, which always ensures matching versions anyway)
-      sly-ignore-protocol-mismatches t
-
       ;; Make sure SLY knows about our SBCL
       sly-lisp-implementations
       `((sbcl (,(executable-find "sbcl") "--dynamic-space-size" "256"))))
