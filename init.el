@@ -69,7 +69,7 @@
                     :background (if (display-graphic-p)
                                     "#161a1f" "default")
                     :foreground (if (display-graphic-p)
-                                    "white" "default")
+                                    "wheat" "default")
 		    :family "juliamono"
                     :height 120)
 
