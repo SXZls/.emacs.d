@@ -53,7 +53,7 @@
 (prefer-coding-system 'utf-8)
 (setq uniquify-buffer-name-style 'post-forward-angle-brackets
       visible-bell 1
-      inhibit-start-screen 1
+      inhibit-start-screen -1
       enable-recursive-minibuffers 1
       treesit-extra-load-path (executable-find "tree-sitter")
       isearch-allow-scroll 1
