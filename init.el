@@ -24,16 +24,13 @@
                ("gnu" . "https://elpa.gnu.org/packages/")))
 
 (defvar package-contents-refreshed nil)
-
 (defun package-ensure-refreshed ()
   (unless package-contents-refreshed
     (package-refresh-contents)
     (setq package-contents-refreshed t)))
-
 (defun package-locally-installed-p (package)
   (or (assq package package-alist)
       (package-built-in-p package)))
-
 (defun ensure-installed (&rest packages)
   (when-let ((missing (cl-remove-if
                        #'package-locally-installed-p packages)))
@@ -52,9 +49,9 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (ido-mode 1)
-(prefer-coding-system 'utf-8)
 (auto-image-file-mode 1)
-(setq uniquify-buffer-name-style 'forward
+(prefer-coding-system 'utf-8)
+(setq uniquify-buffer-name-style 'post-forward-angle-brackets
       visible-bell 1
       enable-recursive-minibuffers 1
       treesit-extra-load-path (executable-find "tree-sitter")
@@ -62,48 +59,28 @@
       redisplay-skip-fontification-on-input 1
       save-interprogram-paste-before-kill 1
       kill-do-not-save-duplicates 1
-      inhibit-startup-screen 1
       initial-major-mode 'fundamental-mode
       frame-inhibit-implied-resize 1
-      auto-mode-case-fold nil
+      dired-recursive-copies 'top
+      dired-recursive-deletes 'top
       buffer-face-mode-face '(:family "Unifont" :height 160))
-
+(with-eval-after-load 'dired (require 'dired-x))
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
-                                    "#001e1e" "unspecified-bg")
+                                    "#161a1f" "default")
                     :foreground (if (display-graphic-p)
-                                    "wheat" "unspecified-fg")
+                                    "white" "default")
 		    :family "juliamono"
                     :height 120)
 
-(setq custom-file (expand-file-name "custom.el"
-                                    (concat user-emacs-directory
-                                            "site-lisp/")))
-(when (file-exists-p custom-file)
-  (load-file custom-file))
-
 (dolist (pair '(("\\.l\\'" . c-mode)
-           ("\\.cl\\'" . lisp-mode)
-           ("\\.lisp\\'" . lisp-mode)
-           ("\\.scm\\'" . scheme-mode)
-           ("\\.rkt\\'" . scheme-mode)
-           ("\\.ss\\'" . scheme-mode)))
+                ("\\.cl\\'" . lisp-mode)
+                ("\\.lisp\\'" . lisp-mode)
+                ("\\.scm\\'" . scheme-mode)
+                ("\\.rkt\\'" . scheme-mode)
+                ("\\.ss\\'" . scheme-mode)))
   (add-to-list 'auto-mode-alist pair))
 ;; easy to add-mode-list.
-;;;;;;;;;
-;; abbrev
-(setq my-abbrevs-file (expand-file-name
-                       "site-lisp/abbrevs.el"
-                       user-emacs-directory))
-(when (file-exists-p my-abbrevs-file)
-  (read-abbrev-file my-abbrevs-file))
-;;;;;;;;;
-;;; dired
-(add-hook 'dired-load-hook
-          (function (lambda ()
-                      (load "dired-x"))))
-(setq dired-recursive-copies 'top
-      dired-recursive-deletes 'top)
 ;;;;;;;;
 ;; magit
 (autoload 'magit-status "magit" "Magit status." t)
