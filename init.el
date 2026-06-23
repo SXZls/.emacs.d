@@ -51,7 +51,7 @@
 (ido-mode 1)
 (auto-image-file-mode 1)
 (prefer-coding-system 'utf-8)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets
+(setq uniquify-buffer-name-style 'reverse
       visible-bell 1
       inhibit-startup-screen 1
       enable-recursive-minibuffers 1
