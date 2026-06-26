@@ -2,8 +2,7 @@
 (defvar file-name-handler-alist--orig file-name-handler-alist)
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.6
-      file-name-handler-alist nil
-      jit-lock-defer-time 0.05)
+      file-name-handler-alist nil)
 (add-hook 'emacs-startup-hook
 	  (lambda ()
 	    (setq gc-cons-threshold (* 16 1024 1024)
@@ -19,9 +18,9 @@
 ;;;;;;;;;;
 ;; package
 (setq package-archives
-             '(("melpa" . "https://melpa.org/packages/")
-               ("nongnu" . "https://elpa.nongnu.org/packages/")
-               ("gnu" . "https://elpa.gnu.org/packages/")))
+      '(("melpa" . "https://melpa.org/packages/")
+        ("nongnu" . "https://elpa.nongnu.org/packages/")
+        ("gnu" . "https://elpa.gnu.org/packages/")))
 
 (defvar package-contents-refreshed nil)
 (defun package-ensure-refreshed ()
@@ -37,7 +36,7 @@
     (package-ensure-refreshed)
     (mapc #'package-install missing)))
 
-(ensure-installed 'magit 'paredit 'yasnippet 'sly)
+(ensure-installed 'magit 'paredit 'yasnippet 'sly 'tuareg 'merlin)
 ;;;;;;;;;;
 ;; enhance
 (setq-default indent-tabs-mode nil)
@@ -58,28 +57,27 @@
       treesit-extra-load-path (executable-find "tree-sitter")
       isearch-allow-scroll 1
       redisplay-skip-fontification-on-input 1
+      jit-lock-defer-time 0.05
       save-interprogram-paste-before-kill 1
       kill-do-not-save-duplicates 1
       initial-major-mode 'fundamental-mode
       frame-inhibit-implied-resize 1
       dired-recursive-copies 'top
       dired-recursive-deletes 'top
-      buffer-face-mode-face '(:family "Unifont" :height 160))
+      buffer-face-mode-face '(:family "Unifont" :height 140))
 (with-eval-after-load 'dired (require 'dired-x))
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
-                                    "#161a1f" "default")
+                                    "black" "default")
                     :foreground (if (display-graphic-p)
                                     "wheat" "default")
 		    :family "juliamono"
                     :height 120)
 
-(dolist (pair '(("\\.l\\'" . c-mode)
-                ("\\.cl\\'" . lisp-mode)
-                ("\\.lisp\\'" . lisp-mode)
-                ("\\.scm\\'" . scheme-mode)
+(dolist (pair '(("\\.cl\\'" . lisp-mode)
                 ("\\.rkt\\'" . scheme-mode)
-                ("\\.ss\\'" . scheme-mode)))
+                ("\\.ml\\'" . tuareg-mode)
+                ("\\.mli\\'" . tuareg-mode)))
   (add-to-list 'auto-mode-alist pair))
 ;; easy to add-mode-list.
 ;;;;;;;;
@@ -170,3 +168,27 @@
 (add-hook 'sly-mrepl-mode-hook 'electric-pair-local-mode)
 ;; Make sure we don't clash with SLIME when starting
 (add-hook 'lisp-mode-hook 'sly-mode)
+;;;;;;;;
+;; ocaml
+(autoload 'tuareg-mode "tuareg" "OCaml mode." t)
+(autoload 'tuareg-mode "merlin" "Merlin mode." t)
+(add-hook 'tuareg-mode-hook 'merlin-mode)
+(with-eval-after-load 'merlin
+  (let ((opam-share (ignore-errors
+                      (car (process-lines "opam" "var" "share")))))
+    (when (and opam-share (file-directory-p opam-share))
+      (add-to-list 'load-path
+                   (expand-file-name ".emacs.d/site-lisp" opam-share))))
+  (setq merlin-error-after-save nil))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
