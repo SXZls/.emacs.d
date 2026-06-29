@@ -15,7 +15,7 @@
 (let ((default-directory
        (expand-file-name "site-lisp" user-emacs-directory)))
   (normal-top-level-add-subdirs-to-load-path))
-;;;;;;;;;;
+
 ;; package
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
@@ -37,14 +37,13 @@
     (mapc #'package-install missing)))
 
 (ensure-installed 'magit 'paredit 'yasnippet 'sly 'tuareg 'merlin)
-;;;;;;;;;;
+
 ;; enhance
 (setq-default indent-tabs-mode nil)
 (recentf-mode 1)
 (save-place-mode 1)
 (electric-pair-mode 1)
 ;(global-display-line-numbers-mode 1)
-(column-number-mode 1)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (ido-mode 1)
@@ -68,7 +67,7 @@
 (with-eval-after-load 'dired (require 'dired-x))
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
-                                    "black" "default")
+                                    "#121e1e" "default")
                     :foreground (if (display-graphic-p)
                                     "wheat" "default")
 		    :family "juliamono"
@@ -79,8 +78,7 @@
                 ("\\.ml\\'" . tuareg-mode)
                 ("\\.mli\\'" . tuareg-mode)))
   (add-to-list 'auto-mode-alist pair))
-;; easy to add-mode-list.
-;;;;;;;;
+
 ;; magit
 (autoload 'magit-status "magit" "Magit status." t)
 (autoload 'magit-blame "magit" "Blame current file." t)
@@ -92,13 +90,13 @@
   (setq magit-auto-select-connection 'always)
   ;; other configs
 )
-;;;;;;;;;;;;
+
 ;; yasnippet
 (autoload 'yas-minor-mode "yasnippet" "YASnippet minor mode." t)
 (autoload 'yas-reload-all "yasnippet" nil t)
 (add-hook 'prog-mode-hook 'yas-minor-mode)
 (add-hook 'LaTeX-mode-hook 'yas-minor-mode)
-;;;;;;;;;;
+
 ;; paredit
 (autoload 'enable-paredit-mode "paredit" "Paredit of Lisp code." t)
 (add-hook 'lisp-mode-hook 'enable-paredit-mode)
@@ -110,7 +108,7 @@
 (put 'paredit-forward-delete 'delete-selection 'supersede)
 (put 'paredit-backward-delete 'delete-selection 'supersede)
 (put 'paredit-newline 'delete-selection t)
-;;;;;;;;;
+
 ;; Scheme 
 ;(require 'cmuscheme)
 (autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process" t)
@@ -150,7 +148,7 @@
             (define-key scheme-mode-map (kbd "C-c C-d")
                         'scheme-send-definition-split-window)
             (local-set-key (kbd "C-c C-p") 'use-scheme)))
-;;;;;;;;;;;;;;
+
 ;; common lisp
 (remove-hook 'lisp-mode-hook 'cl-lisp-mode-hook)
 (autoload 'sly "sly" "Start SLY" t)
@@ -168,7 +166,7 @@
 (add-hook 'sly-mrepl-mode-hook 'electric-pair-local-mode)
 ;; Make sure we don't clash with SLIME when starting
 (add-hook 'lisp-mode-hook 'sly-mode)
-;;;;;;;;
+
 ;; ocaml
 (autoload 'tuareg-mode "tuareg" "OCaml mode." t)
 (autoload 'tuareg-mode "merlin" "Merlin mode." t)
@@ -180,6 +178,7 @@
       (add-to-list 'load-path
                    (expand-file-name ".emacs.d/site-lisp" opam-share))))
   (setq merlin-error-after-save nil))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
