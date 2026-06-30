@@ -17,6 +17,8 @@
   (normal-top-level-add-subdirs-to-load-path))
 
 ;; package
+(require 'cl-lib)
+(require 'package)
 (setq package-archives
       '(("melpa" . "https://melpa.org/packages/")
         ("nongnu" . "https://elpa.nongnu.org/packages/")
@@ -59,7 +61,6 @@
       jit-lock-defer-time 0.05
       save-interprogram-paste-before-kill 1
       kill-do-not-save-duplicates 1
-      initial-major-mode 'fundamental-mode
       frame-inhibit-implied-resize 1
       dired-recursive-copies 'top
       dired-recursive-deletes 'top
