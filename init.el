@@ -47,7 +47,6 @@
 (electric-pair-mode 1)
 ;(global-display-line-numbers-mode 1)
 (tool-bar-mode -1)
-(menu-bar-mode -1)
 (ido-mode 1)
 (auto-image-file-mode 1)
 (prefer-coding-system 'utf-8)
@@ -66,6 +65,8 @@
       dired-recursive-deletes 'top
       buffer-face-mode-face '(:family "Unifont" :height 140))
 (with-eval-after-load 'dired (require 'dired-x))
+(unless (display-graphic-p) (xterm-mouse-mode 1))
+
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
                                     "#121e1e" "default")
@@ -77,7 +78,9 @@
 (dolist (pair '(("\\.cl\\'" . lisp-mode)
                 ("\\.rkt\\'" . scheme-mode)
                 ("\\.ml\\'" . tuareg-mode)
-                ("\\.mli\\'" . tuareg-mode)))
+                ("\\.mli\\'" . tuareg-mode)
+                ("\\.agda\\'" . agda2-mode)
+                ("\\.lagda\\'" . agda2-mode)))
   (add-to-list 'auto-mode-alist pair))
 
 ;; magit
@@ -111,10 +114,8 @@
 (put 'paredit-newline 'delete-selection t)
 
 ;; Scheme 
-;(require 'cmuscheme)
 (autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process" t)
 (autoload 'scheme-mode "cmuscheme" "Scheme mode" t)
-
 (setq scheme-program-name
       (or (executable-find "scheme")
           (executable-find "racket")
@@ -179,6 +180,15 @@
       (add-to-list 'load-path
                    (expand-file-name ".emacs.d/site-lisp" opam-share))))
   (setq merlin-error-after-save nil))
+
+;; agda
+(autoload 'agda2-mode "agda2" "Agda mode." t)
+(with-eval-after-load 'agda2-mode
+  (load-file (let ((coding-system-for-read 'utf-8))
+               (shell-command-to-string "agda --emacs-mode locate")))
+  (require 'agda-input)
+  (setq agda2-program-name "agda"
+        agda2-highlight-level 'interactive))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
