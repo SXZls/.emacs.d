@@ -61,19 +61,18 @@
       save-interprogram-paste-before-kill 1
       kill-do-not-save-duplicates 1
       frame-inhibit-implied-resize 1
+      initial-major-mode 'fundamental-mode
       dired-recursive-copies 'top
       dired-recursive-deletes 'top
       buffer-face-mode-face '(:family "Unifont" :height 140))
 (with-eval-after-load 'dired (require 'dired-x))
 (unless (display-graphic-p) (xterm-mouse-mode 1))
-
 (set-face-attribute 'default nil
                     :background (if (display-graphic-p)
                                     "#121e1e" "default")
                     :foreground (if (display-graphic-p)
                                     "wheat" "default")
-		    :family "juliamono"
-                    :height 120)
+		    :family "juliamono")
 
 (dolist (pair '(("\\.cl\\'" . lisp-mode)
                 ("\\.rkt\\'" . scheme-mode)
@@ -113,9 +112,9 @@
 (put 'paredit-backward-delete 'delete-selection 'supersede)
 (put 'paredit-newline 'delete-selection t)
 
-;; Scheme 
-(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process" t)
+;; Scheme
 (autoload 'scheme-mode "cmuscheme" "Scheme mode" t)
+(autoload 'run-scheme "cmuscheme" "Run an inferior Scheme process" t)
 (setq scheme-program-name
       (or (executable-find "scheme")
           (executable-find "racket")
@@ -126,14 +125,15 @@
    (list (completing-read "Scheme inerpreter:"
                           '("scheme" "racket" "guile") nil t)))
   (if-let ((path (executable-find program)))
-      (progn (setq scheme-program-name path))
+      (setq scheme-program-name path)
     (user-error "Cannot find '%s' in PATH" program)))
 (defun scheme-split-window ()
   (unless (get-buffer-window "*scheme*")
-    (when (= 1 (count-windows))
-      (split-window-vertically (floor (* 0.68 (window-height)))))
-    (with-selected-window (next-window)
-      (switch-to-buffer "*scheme*"))))
+    (let ((target-win (if(= 1 (count-windows))
+                          (split-window-vertically (floor (* 0.68 (window-height))))
+                        (next-window))))
+      (with-selected-window target-win
+        (switch-to-buffer "*scheme*")))))
 (defun scheme-send-last-sexp-split-window ()
   (interactive)
   (scheme-split-window)
@@ -143,13 +143,8 @@
   (scheme-split-window)
   (scheme-send-definition))
 
-(add-hook 'scheme-mode-hook
-          (lambda ()
-            (define-key scheme-mode-map (kbd "C-c C-s")
-                        'scheme-send-last-sexp-split-window)
-            (define-key scheme-mode-map (kbd "C-c C-d")
-                        'scheme-send-definition-split-window)
-            (local-set-key (kbd "C-c C-p") 'use-scheme)))
+(with-eval-after-load 'scheme
+          (define-key scheme-mode-map (kbd "C-c C-p") 'use-scheme))
 
 ;; common lisp
 (remove-hook 'lisp-mode-hook 'cl-lisp-mode-hook)
